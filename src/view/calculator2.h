@@ -7,6 +7,7 @@
 
 #include <QMainWindow>
 
+#include "controllers/expression_controller.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class Calculator2;
@@ -19,7 +20,10 @@ class Calculator2 : public QMainWindow {
  public:
   explicit Calculator2(QWidget *parent = nullptr);
   ~Calculator2() override;
+
+ protected:
   void resizeEvent(QResizeEvent* event) override;
+  void UpdateExpressionText();
 
  public slots:
   void PressButton();
@@ -32,6 +36,7 @@ class Calculator2 : public QMainWindow {
 
  private:
   Ui::Calculator2 *ui_;
+  ExpressionController exp_controller_;
 };
 
 #endif  // SMARTCALC_V2_0_SRC_VIEW_CALCULATOR2_H_

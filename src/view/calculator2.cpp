@@ -7,7 +7,8 @@
 
 #include "calculator2.h"
 
-#include <map>
+#include <QLocale>
+#include <QMap>
 
 #include "ui_calculator2.h"
 
@@ -116,23 +117,20 @@ Calculator2::Calculator2(QWidget *parent)
 Calculator2::~Calculator2() { delete ui_; }
 
 void Calculator2::PressButton() {
-  static std::map<QString, QString> converter = {
-      {ui_->asin->objectName(), "asin ("}, {ui_->sin->objectName(), "sin ("},
-      {ui_->acos->objectName(), "acos ("}, {ui_->cos->objectName(), "cos ("},
-      {ui_->tan->objectName(), "tan ("},   {ui_->atan->objectName(), "atan ("},
-      {ui_->sqrt->objectName(), "sqrt ("}, {ui_->pow->objectName(), "^"},
-      {ui_->log->objectName(), "log ("},   {ui_->nat_log->objectName(), "ln ("},
-      {ui_->mod->objectName(), "mod"},     {ui_->point->objectName(), ","},
-      {ui_->pi->objectName(), "3.14"},
+  static QMap<QString, QString> converter = {
+      {ui_->pow->objectName(), "^"},
+      {ui_->point->objectName(), "."},
+      {ui_->pi->objectName(), "pi"},
   };
 
   auto *button = dynamic_cast<QPushButton *>(sender());
   auto find_result = converter.find(button->objectName());
   if (find_result != converter.end()) {
-    ui_->expression->setText(ui_->expression->text() + find_result->second);
+    exp_controller_.Add(find_result.value());
   } else {
-    ui_->expression->setText(ui_->expression->text() + button->text());
+    exp_controller_.Add(button->text());
   }
+  UpdateExpressionText();
 }
 
 void Calculator2::resizeEvent(QResizeEvent *event) {
@@ -172,17 +170,19 @@ void Calculator2::resizeEvent(QResizeEvent *event) {
 }
 
 void Calculator2::ClearExpression() {
-  ui_->expression->setText("");
-  QMessageBox::critical(nullptr, "ERROR", "NOT IMPL");
+  exp_controller_.Clear();
+  UpdateExpressionText();
 }
 void Calculator2::CancelAction() {
-  ui_->expression->setText("");
-  QMessageBox::critical(nullptr, "ERROR", "NOT IMPL");
+  exp_controller_.Cancel();
+  UpdateExpressionText();
 }
 void Calculator2::Negate() {
-  QMessageBox::critical(nullptr, "ERROR", "NOT IMPL");
+  exp_controller_.Negate();
+  UpdateExpressionText();
 }
 void Calculator2::CalcExpression() {
+  ui_->expression->setText(QString::number(ui_->expression->text().toDouble()));
   QMessageBox::critical(nullptr, "ERROR", "NOT IMPL");
 }
 void Calculator2::CalcCredit() {
@@ -190,4 +190,8 @@ void Calculator2::CalcCredit() {
 }
 void Calculator2::CalcDeposit() {
   QMessageBox::critical(nullptr, "ERROR", "NOT IMPL");
+}
+
+void Calculator2::UpdateExpressionText() {
+  ui_->expression->setText(exp_controller_.String());
 }
