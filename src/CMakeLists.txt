@@ -29,7 +29,7 @@ set(PROJECT_SOURCES
     main.cpp
     view/calculator2.cpp
     view/calculator2.h
-    controllers/expression_controller.cpp controllers/expression_controller.h models/expression.cpp models/expression.h)
+    controllers/expression_controller.cpp controllers/expression_controller.h models/expression.cpp models/expression.h models/polish.cpp models/polish.h models/lexeme.cpp models/lexeme.h)
 
 if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
   qt_add_executable(SmartCalc_v2.0

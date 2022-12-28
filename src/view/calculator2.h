@@ -22,8 +22,9 @@ class Calculator2 : public QMainWindow {
   ~Calculator2() override;
 
  protected:
-  void resizeEvent(QResizeEvent* event) override;
+  void resizeEvent(QResizeEvent *event) override;
   void UpdateExpressionText();
+  bool is_result_ = false;
 
  public slots:
   void PressButton();

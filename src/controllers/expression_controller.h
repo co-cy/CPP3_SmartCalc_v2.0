@@ -6,6 +6,7 @@
 #define SMARTCALC_V2_0_SRC_CONTROLLERS_EXPRESSION_CONTROLLER_H_
 
 #include "models/expression.h"
+#include "models/polish.h"
 
 class ExpressionController {
  private:
@@ -16,7 +17,15 @@ class ExpressionController {
   void Clear() { expression_.Clear(); }
   void Cancel() { expression_.Cancel(); };
   void Negate() { expression_.Negate(); };
-  void Calc(double x) { expression_.Calc(x); };
+  double Calc(long double x) {
+    Polish polish{expression_.GetLexemes()};
+    double result = polish.Calc(x);
+
+    Clear();
+    Add(QString::number(result));
+
+    return result;
+  };
   [[nodiscard]] const QString &String() const noexcept {
     return expression_.String();
   };

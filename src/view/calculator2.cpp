@@ -7,7 +7,6 @@
 
 #include "calculator2.h"
 
-#include <QLocale>
 #include <QMap>
 
 #include "ui_calculator2.h"
@@ -174,7 +173,9 @@ void Calculator2::ClearExpression() {
   UpdateExpressionText();
 }
 void Calculator2::CancelAction() {
-  exp_controller_.Cancel();
+  if (!is_result_) {
+    exp_controller_.Cancel();
+  }
   UpdateExpressionText();
 }
 void Calculator2::Negate() {
@@ -182,8 +183,19 @@ void Calculator2::Negate() {
   UpdateExpressionText();
 }
 void Calculator2::CalcExpression() {
-  ui_->expression->setText(QString::number(ui_->expression->text().toDouble()));
-  QMessageBox::critical(nullptr, "ERROR", "NOT IMPL");
+  if (is_result_) {
+    CancelAction();
+  }
+
+  is_result_ = true;
+  try {
+    double result = exp_controller_.Calc(ui_->value_x->value());
+    ui_->expression->setText(ui_->expression->text() + " = " +
+                             QString::number(result));
+  } catch (std::exception &e) {
+    ui_->expression->setStyleSheet("color: red;");
+    ui_->expression->setText(e.what());
+  }
 }
 void Calculator2::CalcCredit() {
   QMessageBox::critical(nullptr, "ERROR", "NOT IMPL");
@@ -193,5 +205,9 @@ void Calculator2::CalcDeposit() {
 }
 
 void Calculator2::UpdateExpressionText() {
+  if (is_result_) {
+    is_result_ = false;
+    ui_->expression->setStyleSheet("");
+  }
   ui_->expression->setText(exp_controller_.String());
 }

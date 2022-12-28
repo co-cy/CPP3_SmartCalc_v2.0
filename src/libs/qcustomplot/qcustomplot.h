@@ -132,7 +132,7 @@ class QCPPolarGrid;
 class QCPPolarGraph;
 
 /* including file 'src/global.h'            */
-/* modified 2022-11-06T12:45:57, size 18102 */
+/* modified 2022-11-06T12:45:57, Size 18102 */
 
 #define QCUSTOMPLOT_VERSION_STR "2.1.1"
 #define QCUSTOMPLOT_VERSION 0x020101
@@ -562,7 +562,7 @@ Q_DECLARE_METATYPE(QCP::SelectionType)
 /* end of 'src/global.h' */
 
 /* including file 'src/vector2d.h'         */
-/* modified 2022-11-06T12:45:56, size 4988 */
+/* modified 2022-11-06T12:45:56, Size 4988 */
 
 class QCP_LIB_DECL QCPVector2D {
  public:
@@ -655,7 +655,7 @@ inline QDebug operator<<(QDebug d, const QCPVector2D &vec) {
 /* end of 'src/vector2d.h' */
 
 /* including file 'src/painter.h'          */
-/* modified 2022-11-06T12:45:56, size 4035 */
+/* modified 2022-11-06T12:45:56, Size 4035 */
 
 class QCP_LIB_DECL QCPPainter : public QPainter {
   Q_GADGET
@@ -727,7 +727,7 @@ Q_DECLARE_METATYPE(QCPPainter::PainterMode)
 /* end of 'src/painter.h' */
 
 /* including file 'src/paintbuffer.h'      */
-/* modified 2022-11-06T12:45:56, size 5006 */
+/* modified 2022-11-06T12:45:56, Size 5006 */
 
 class QCP_LIB_DECL QCPAbstractPaintBuffer {
  public:
@@ -783,7 +783,7 @@ class QCP_LIB_DECL QCPPaintBufferPixmap : public QCPAbstractPaintBuffer {
 #ifdef QCP_OPENGL_PBUFFER
 class QCP_LIB_DECL QCPPaintBufferGlPbuffer : public QCPAbstractPaintBuffer {
  public:
-  explicit QCPPaintBufferGlPbuffer(const QSize &size, double devicePixelRatio,
+  explicit QCPPaintBufferGlPbuffer(const QSize &Size, double devicePixelRatio,
                                    int multisamples);
   virtual ~QCPPaintBufferGlPbuffer() Q_DECL_OVERRIDE;
 
@@ -805,7 +805,7 @@ class QCP_LIB_DECL QCPPaintBufferGlPbuffer : public QCPAbstractPaintBuffer {
 #ifdef QCP_OPENGL_FBO
 class QCP_LIB_DECL QCPPaintBufferGlFbo : public QCPAbstractPaintBuffer {
  public:
-  explicit QCPPaintBufferGlFbo(const QSize &size, double devicePixelRatio,
+  explicit QCPPaintBufferGlFbo(const QSize &Size, double devicePixelRatio,
                                QWeakPointer<QOpenGLContext> glContext,
                                QWeakPointer<QOpenGLPaintDevice> glPaintDevice);
   virtual ~QCPPaintBufferGlFbo() Q_DECL_OVERRIDE;
@@ -830,7 +830,7 @@ class QCP_LIB_DECL QCPPaintBufferGlFbo : public QCPAbstractPaintBuffer {
 /* end of 'src/paintbuffer.h' */
 
 /* including file 'src/layer.h'            */
-/* modified 2022-11-06T12:45:56, size 7038 */
+/* modified 2022-11-06T12:45:56, Size 7038 */
 
 class QCP_LIB_DECL QCPLayer : public QObject {
   Q_OBJECT
@@ -985,7 +985,7 @@ class QCP_LIB_DECL QCPLayerable : public QObject {
 /* end of 'src/layer.h' */
 
 /* including file 'src/axis/range.h'       */
-/* modified 2022-11-06T12:45:56, size 5280 */
+/* modified 2022-11-06T12:45:56, Size 5280 */
 
 class QCP_LIB_DECL QCPRange {
  public:
@@ -1113,7 +1113,7 @@ inline const QCPRange operator/(const QCPRange &range, double value) {
 /* end of 'src/axis/range.h' */
 
 /* including file 'src/selection.h'        */
-/* modified 2022-11-06T12:45:56, size 8569 */
+/* modified 2022-11-06T12:45:56, Size 8569 */
 
 class QCP_LIB_DECL QCPDataRange {
  public:
@@ -1331,7 +1331,7 @@ inline QDebug operator<<(QDebug d, const QCPDataSelection &selection) {
 /* end of 'src/selection.h' */
 
 /* including file 'src/selectionrect.h'    */
-/* modified 2022-11-06T12:45:56, size 3354 */
+/* modified 2022-11-06T12:45:56, Size 3354 */
 
 class QCP_LIB_DECL QCPSelectionRect : public QCPLayerable {
   Q_OBJECT
@@ -1384,7 +1384,7 @@ class QCP_LIB_DECL QCPSelectionRect : public QCPLayerable {
 /* end of 'src/selectionrect.h' */
 
 /* including file 'src/layout.h'            */
-/* modified 2022-11-06T12:45:56, size 14279 */
+/* modified 2022-11-06T12:45:56, Size 14279 */
 
 class QCP_LIB_DECL QCPMarginGroup : public QObject {
   Q_OBJECT
@@ -1448,7 +1448,7 @@ class QCP_LIB_DECL QCPLayoutElement : public QCPLayerable {
   Q_ENUMS(UpdatePhase)
 
   /*!
-    Defines to which rect of a layout element the size constraints that can be
+    Defines to which rect of a layout element the Size constraints that can be
     set via \ref setMinimumSize and \ref setMaximumSize apply. The outer rect
     (\ref outerRect) includes the margins (e.g. in the case of a QCPAxisRect the
     axis labels), whereas the inner rect (\ref rect) does not.
@@ -1456,9 +1456,9 @@ class QCP_LIB_DECL QCPLayoutElement : public QCPLayerable {
     \see setSizeConstraintRect
   */
   enum SizeConstraintRect {
-    scrInnerRect  ///< Minimum/Maximum size constraints apply to inner rect
+    scrInnerRect  ///< Minimum/Maximum Size constraints apply to inner rect
     ,
-    scrOuterRect  ///< Minimum/Maximum size constraints apply to outer rect,
+    scrOuterRect  ///< Minimum/Maximum Size constraints apply to outer rect,
                   ///< thus include layout element margins
   };
   Q_ENUMS(SizeConstraintRect)
@@ -1737,7 +1737,7 @@ Q_DECLARE_METATYPE(QCPLayoutInset::InsetPlacement)
 /* end of 'src/layout.h' */
 
 /* including file 'src/lineending.h'       */
-/* modified 2022-11-06T12:45:56, size 4426 */
+/* modified 2022-11-06T12:45:56, Size 4426 */
 
 class QCP_LIB_DECL QCPLineEnding {
   Q_GADGET
@@ -1815,7 +1815,7 @@ Q_DECLARE_METATYPE(QCPLineEnding::EndingStyle)
 /* end of 'src/lineending.h' */
 
 /* including file 'src/axis/labelpainter.h' */
-/* modified 2022-11-06T12:45:56, size 7086  */
+/* modified 2022-11-06T12:45:56, Size 7086  */
 
 class QCPLabelPainterPrivate {
   Q_GADGET
@@ -1894,7 +1894,7 @@ class QCPLabelPainterPrivate {
   bool abbreviateDecimalPowers() const { return mAbbreviateDecimalPowers; }
   int cacheSize() const;
 
-  // virtual int size() const;
+  // virtual int Size() const;
 
   // non-property methods:
   void drawTickLabel(QCPPainter *painter, const QPointF &tickPos,
@@ -1980,14 +1980,14 @@ Q_DECLARE_METATYPE(QCPLabelPainterPrivate::AnchorSide)
 /* end of 'src/axis/labelpainter.h' */
 
 /* including file 'src/axis/axisticker.h'  */
-/* modified 2022-11-06T12:45:56, size 4230 */
+/* modified 2022-11-06T12:45:56, Size 4230 */
 
 class QCP_LIB_DECL QCPAxisTicker {
   Q_GADGET
  public:
   /*!
     Defines the strategies that the axis ticker may follow when choosing the
-    size of the tick step.
+    Size of the tick step.
 
     \see setTickStepStrategy
   */
@@ -2056,7 +2056,7 @@ Q_DECLARE_METATYPE(QSharedPointer<QCPAxisTicker>)
 /* end of 'src/axis/axisticker.h' */
 
 /* including file 'src/axis/axistickerdatetime.h' */
-/* modified 2022-11-06T12:45:56, size 3600        */
+/* modified 2022-11-06T12:45:56, Size 3600        */
 
 class QCP_LIB_DECL QCPAxisTickerDateTime : public QCPAxisTicker {
  public:
@@ -2112,7 +2112,7 @@ class QCP_LIB_DECL QCPAxisTickerDateTime : public QCPAxisTicker {
 /* end of 'src/axis/axistickerdatetime.h' */
 
 /* including file 'src/axis/axistickertime.h' */
-/* modified 2022-11-06T12:45:56, size 3542    */
+/* modified 2022-11-06T12:45:56, Size 3542    */
 
 class QCP_LIB_DECL QCPAxisTickerTime : public QCPAxisTicker {
   Q_GADGET
@@ -2169,7 +2169,7 @@ Q_DECLARE_METATYPE(QCPAxisTickerTime::TimeUnit)
 /* end of 'src/axis/axistickertime.h' */
 
 /* including file 'src/axis/axistickerfixed.h' */
-/* modified 2022-11-06T12:45:56, size 3308     */
+/* modified 2022-11-06T12:45:56, Size 3308     */
 
 class QCP_LIB_DECL QCPAxisTickerFixed : public QCPAxisTicker {
   Q_GADGET
@@ -2216,7 +2216,7 @@ Q_DECLARE_METATYPE(QCPAxisTickerFixed::ScaleStrategy)
 /* end of 'src/axis/axistickerfixed.h' */
 
 /* including file 'src/axis/axistickertext.h' */
-/* modified 2022-11-06T12:45:56, size 3090    */
+/* modified 2022-11-06T12:45:56, Size 3090    */
 
 class QCP_LIB_DECL QCPAxisTickerText : public QCPAxisTicker {
  public:
@@ -2256,7 +2256,7 @@ class QCP_LIB_DECL QCPAxisTickerText : public QCPAxisTicker {
 /* end of 'src/axis/axistickertext.h' */
 
 /* including file 'src/axis/axistickerpi.h' */
-/* modified 2022-11-06T12:45:56, size 3911  */
+/* modified 2022-11-06T12:45:56, Size 3911  */
 
 class QCP_LIB_DECL QCPAxisTickerPi : public QCPAxisTicker {
   Q_GADGET
@@ -2300,7 +2300,7 @@ class QCP_LIB_DECL QCPAxisTickerPi : public QCPAxisTicker {
   FractionStyle mFractionStyle;
 
   // non-property members:
-  double mPiTickStep;  // size of one tick step in units of mPiValue
+  double mPiTickStep;  // Size of one tick step in units of mPiValue
 
   // reimplemented virtual methods:
   virtual double getTickStep(const QCPRange &range) Q_DECL_OVERRIDE;
@@ -2320,7 +2320,7 @@ Q_DECLARE_METATYPE(QCPAxisTickerPi::FractionStyle)
 /* end of 'src/axis/axistickerpi.h' */
 
 /* including file 'src/axis/axistickerlog.h' */
-/* modified 2022-11-06T12:45:56, size 2594   */
+/* modified 2022-11-06T12:45:56, Size 2594   */
 
 class QCP_LIB_DECL QCPAxisTickerLog : public QCPAxisTicker {
  public:
@@ -2351,7 +2351,7 @@ class QCP_LIB_DECL QCPAxisTickerLog : public QCPAxisTicker {
 /* end of 'src/axis/axistickerlog.h' */
 
 /* including file 'src/axis/axis.h'         */
-/* modified 2022-11-06T12:45:56, size 20913 */
+/* modified 2022-11-06T12:45:56, Size 20913 */
 
 class QCP_LIB_DECL QCPGrid : public QCPLayerable {
   Q_OBJECT
@@ -2828,7 +2828,7 @@ class QCPAxisPainterPrivate {
 /* end of 'src/axis/axis.h' */
 
 /* including file 'src/scatterstyle.h'     */
-/* modified 2022-11-06T12:45:56, size 7275 */
+/* modified 2022-11-06T12:45:56, Size 7275 */
 
 class QCP_LIB_DECL QCPScatterStyle {
   Q_GADGET
@@ -2849,7 +2849,7 @@ class QCP_LIB_DECL QCPScatterStyle {
     ,
     spBrush = 0x02  ///< <tt>0x02</tt> The brush property, see \ref setBrush
     ,
-    spSize = 0x04  ///< <tt>0x04</tt> The size property, see \ref setSize
+    spSize = 0x04  ///< <tt>0x04</tt> The Size property, see \ref setSize
     ,
     spShape = 0x08  ///< <tt>0x08</tt> The shape property, see \ref setShape
     ,
@@ -2973,7 +2973,7 @@ Q_DECLARE_METATYPE(QCPScatterStyle::ScatterShape)
 /* end of 'src/scatterstyle.h' */
 
 /* including file 'src/datacontainer.h'     */
-/* modified 2022-11-06T12:45:56, size 34305 */
+/* modified 2022-11-06T12:45:56, Size 34305 */
 
 /*! \relates QCPDataContainer
   Returns whether the sort key of \a a is less than the sort key of \a b.
@@ -3137,7 +3137,7 @@ class QCPDataContainer  // no QCP_LIB_DECL, template class ends up in header
 
 /* start documentation of inline functions */
 
-/*! \fn int QCPDataContainer<DataType>::size() const
+/*! \fn int QCPDataContainer<DataType>::Size() const
 
   Returns the number of data points in the container.
 */
@@ -3194,7 +3194,7 @@ class QCPDataContainer  // no QCP_LIB_DECL, template class ends up in header
 
   Returns a \ref QCPDataRange encompassing the entire data set of this
   container. This means the begin index of the returned range is 0, and the end
-  index is \ref size.
+  index is \ref Size.
 */
 
 /* end documentation of inline functions */
@@ -3801,13 +3801,13 @@ void QCPDataContainer<DataType>::limitIteratorsToDataRange(
 
 /*! \internal
 
-  Increases the preallocation pool to have a size of at least \a
+  Increases the preallocation pool to have a Size of at least \a
   minimumPreallocSize. Depending on the preallocation history, the container
-  will grow by more than requested, to speed up future consecutive size
+  will grow by more than requested, to speed up future consecutive Size
   increases.
 
   if \a minimumPreallocSize is smaller than or equal to the current
-  preallocation pool size, this method does nothing.
+  preallocation pool Size, this method does nothing.
 */
 template <class DataType>
 void QCPDataContainer<DataType>::preallocateGrow(int minimumPreallocSize) {
@@ -3828,7 +3828,7 @@ void QCPDataContainer<DataType>::preallocateGrow(int minimumPreallocSize) {
 
 /*! \internal
 
-  This method decides, depending on the total allocation size and the size of
+  This method decides, depending on the total allocation size and the Size of
   the unused pre- and postallocation pools, whether it is sensible to reduce the
   pools in order to free up unused memory. It then possibly calls \ref squeeze
   to do the deallocation.
@@ -3850,7 +3850,7 @@ void QCPDataContainer<DataType>::performAutoSqueeze() {
   bool shrinkPostAllocation = false;
   bool shrinkPreAllocation = false;
   if (totalAlloc > 650000)  // if allocation is larger, shrink earlier with
-                            // respect to total used size
+                            // respect to total used Size
   {
     shrinkPostAllocation =
         postAllocSize >
@@ -3874,7 +3874,7 @@ void QCPDataContainer<DataType>::performAutoSqueeze() {
 /* end of 'src/datacontainer.h' */
 
 /* including file 'src/plottable.h'        */
-/* modified 2022-11-06T12:45:56, size 8461 */
+/* modified 2022-11-06T12:45:56, Size 8461 */
 
 class QCP_LIB_DECL QCPSelectionDecorator {
   Q_GADGET
@@ -4050,7 +4050,7 @@ class QCP_LIB_DECL QCPAbstractPlottable : public QCPLayerable {
 /* end of 'src/plottable.h' */
 
 /* including file 'src/item.h'             */
-/* modified 2022-11-06T12:45:56, size 9425 */
+/* modified 2022-11-06T12:45:56, Size 9425 */
 
 class QCP_LIB_DECL QCPItemAnchor {
   Q_GADGET
@@ -4106,7 +4106,7 @@ class QCP_LIB_DECL QCPItemPosition : public QCPItemAnchor {
                 ///< corner of the viewport/widget.
     ,
     ptViewportRatio  ///< Static positioning given by a fraction of the viewport
-                     ///< size. For example, if you call setCoords(0, 0), the
+                     ///< Size. For example, if you call setCoords(0, 0), the
                      ///< position will be at the top left corner of the
                      ///< viewport/widget. setCoords(1, 1) will be at the bottom
                      ///< right corner, setCoords(0.5, 0) will be horizontally
@@ -4114,7 +4114,7 @@ class QCP_LIB_DECL QCPItemPosition : public QCPItemAnchor {
                      ///< viewport/widget, etc.
     ,
     ptAxisRectRatio  ///< Static positioning given by a fraction of the axis
-                     ///< rect size (see \ref setAxisRect). For example, if you
+                     ///< rect Size (see \ref setAxisRect). For example, if you
                      ///< call setCoords(0, 0), the position will be at the top
                      ///< left corner of the axis rect. setCoords(1, 1) will be
                      ///< at the bottom right corner, setCoords(0.5, 0) will be
@@ -4260,7 +4260,7 @@ class QCP_LIB_DECL QCPAbstractItem : public QCPLayerable {
 /* end of 'src/item.h' */
 
 /* including file 'src/core.h'              */
-/* modified 2022-11-06T12:45:56, size 19304 */
+/* modified 2022-11-06T12:45:56, Size 19304 */
 
 class QCP_LIB_DECL QCustomPlot : public QWidget {
   Q_OBJECT
@@ -4711,7 +4711,7 @@ ItemType *QCustomPlot::itemAt(const QPointF &pos, bool onlySelectable) const {
 /* end of 'src/core.h' */
 
 /* including file 'src/plottable1d.h'       */
-/* modified 2022-11-06T12:45:56, size 25638 */
+/* modified 2022-11-06T12:45:56, Size 25638 */
 
 class QCPPlottableInterface1D {
  public:
@@ -5348,7 +5348,7 @@ void QCPAbstractPlottable1D<DataType>::drawPolyline(
 /* end of 'src/plottable1d.h' */
 
 /* including file 'src/colorgradient.h'    */
-/* modified 2022-11-06T12:45:56, size 7262 */
+/* modified 2022-11-06T12:45:56, Size 7262 */
 
 class QCP_LIB_DECL QCPColorGradient {
   Q_GADGET
@@ -5497,7 +5497,7 @@ Q_DECLARE_METATYPE(QCPColorGradient::GradientPreset)
 /* end of 'src/colorgradient.h' */
 
 /* including file 'src/selectiondecorator-bracket.h' */
-/* modified 2022-11-06T12:45:56, size 4458           */
+/* modified 2022-11-06T12:45:56, Size 4458           */
 
 class QCP_LIB_DECL QCPSelectionDecoratorBracket : public QCPSelectionDecorator {
   Q_GADGET
@@ -5511,10 +5511,10 @@ class QCP_LIB_DECL QCPSelectionDecoratorBracket : public QCPSelectionDecorator {
   enum BracketStyle {
     bsSquareBracket  ///< A square bracket is drawn.
     ,
-    bsHalfEllipse  ///< A half ellipse is drawn. The size of the ellipse is
+    bsHalfEllipse  ///< A half ellipse is drawn. The Size of the ellipse is
                    ///< given by the bracket width/height properties.
     ,
-    bsEllipse  ///< An ellipse is drawn. The size of the ellipse is given by the
+    bsEllipse  ///< An ellipse is drawn. The Size of the ellipse is given by the
                ///< bracket width/height properties.
     ,
     bsPlus  ///< A plus is drawn.
@@ -5573,7 +5573,7 @@ Q_DECLARE_METATYPE(QCPSelectionDecoratorBracket::BracketStyle)
 /* end of 'src/selectiondecorator-bracket.h' */
 
 /* including file 'src/layoutelements/layoutelement-axisrect.h' */
-/* modified 2022-11-06T12:45:56, size 7529                      */
+/* modified 2022-11-06T12:45:56, Size 7529                      */
 
 class QCP_LIB_DECL QCPAxisRect : public QCPLayoutElement {
   Q_OBJECT
@@ -5706,7 +5706,7 @@ class QCP_LIB_DECL QCPAxisRect : public QCPLayoutElement {
 /* end of 'src/layoutelements/layoutelement-axisrect.h' */
 
 /* including file 'src/layoutelements/layoutelement-legend.h' */
-/* modified 2022-11-06T12:45:56, size 10425                   */
+/* modified 2022-11-06T12:45:56, Size 10425                   */
 
 class QCP_LIB_DECL QCPAbstractLegendItem : public QCPLayoutElement {
   Q_OBJECT
@@ -5939,7 +5939,7 @@ Q_DECLARE_METATYPE(QCPLegend::SelectablePart)
 /* end of 'src/layoutelements/layoutelement-legend.h' */
 
 /* including file 'src/layoutelements/layoutelement-textelement.h' */
-/* modified 2022-11-06T12:45:56, size 5359                         */
+/* modified 2022-11-06T12:45:56, Size 5359                         */
 
 class QCP_LIB_DECL QCPTextElement : public QCPLayoutElement {
   Q_OBJECT
@@ -6035,7 +6035,7 @@ class QCP_LIB_DECL QCPTextElement : public QCPLayoutElement {
 /* end of 'src/layoutelements/layoutelement-textelement.h' */
 
 /* including file 'src/layoutelements/layoutelement-colorscale.h' */
-/* modified 2022-11-06T12:45:56, size 5939                        */
+/* modified 2022-11-06T12:45:56, Size 5939                        */
 
 class QCPColorScaleAxisRectPrivate : public QCPAxisRect {
   Q_OBJECT
@@ -6146,7 +6146,7 @@ class QCP_LIB_DECL QCPColorScale : public QCPLayoutElement {
 /* end of 'src/layoutelements/layoutelement-colorscale.h' */
 
 /* including file 'src/plottables/plottable-graph.h' */
-/* modified 2022-11-06T12:45:56, size 9316           */
+/* modified 2022-11-06T12:45:56, Size 9316           */
 
 class QCP_LIB_DECL QCPGraphData {
  public:
@@ -6333,7 +6333,7 @@ Q_DECLARE_METATYPE(QCPGraph::LineStyle)
 /* end of 'src/plottables/plottable-graph.h' */
 
 /* including file 'src/plottables/plottable-curve.h' */
-/* modified 2022-11-06T12:45:56, size 7434           */
+/* modified 2022-11-06T12:45:56, Size 7434           */
 
 class QCP_LIB_DECL QCPCurveData {
  public:
@@ -6479,7 +6479,7 @@ Q_DECLARE_METATYPE(QCPCurve::LineStyle)
 /* end of 'src/plottables/plottable-curve.h' */
 
 /* including file 'src/plottables/plottable-bars.h' */
-/* modified 2022-11-06T12:45:56, size 8955          */
+/* modified 2022-11-06T12:45:56, Size 8955          */
 
 class QCP_LIB_DECL QCPBarsGroup : public QObject {
   Q_OBJECT
@@ -6498,7 +6498,7 @@ class QCP_LIB_DECL QCPBarsGroup : public QObject {
     stAbsolute  ///< Bar spacing is in absolute pixels
     ,
     stAxisRectRatio  ///< Bar spacing is given by a fraction of the axis rect
-                     ///< size
+                     ///< Size
     ,
     stPlotCoords  ///< Bar spacing is in key coordinates and thus scales with
                   ///< the key axis range
@@ -6606,7 +6606,7 @@ class QCP_LIB_DECL QCPBars : public QCPAbstractPlottable1D<QCPBarsData> {
   enum WidthType {
     wtAbsolute  ///< Bar width is in absolute pixels
     ,
-    wtAxisRectRatio  ///< Bar width is given by a fraction of the axis rect size
+    wtAxisRectRatio  ///< Bar width is given by a fraction of the axis rect Size
     ,
     wtPlotCoords  ///< Bar width is in key coordinates and thus scales with the
                   ///< key axis range
@@ -6687,7 +6687,7 @@ Q_DECLARE_METATYPE(QCPBars::WidthType)
 /* end of 'src/plottables/plottable-bars.h' */
 
 /* including file 'src/plottables/plottable-statisticalbox.h' */
-/* modified 2022-11-06T12:45:56, size 7522                    */
+/* modified 2022-11-06T12:45:56, Size 7522                    */
 
 class QCP_LIB_DECL QCPStatisticalBoxData {
  public:
@@ -6834,7 +6834,7 @@ class QCP_LIB_DECL QCPStatisticalBox
 /* end of 'src/plottables/plottable-statisticalbox.h' */
 
 /* including file 'src/plottables/plottable-colormap.h' */
-/* modified 2022-11-06T12:45:56, size 7092              */
+/* modified 2022-11-06T12:45:56, Size 7092              */
 
 class QCP_LIB_DECL QCPColorMapData {
  public:
@@ -6980,7 +6980,7 @@ class QCP_LIB_DECL QCPColorMap : public QCPAbstractPlottable {
 /* end of 'src/plottables/plottable-colormap.h' */
 
 /* including file 'src/plottables/plottable-financial.h' */
-/* modified 2022-11-06T12:45:56, size 8644               */
+/* modified 2022-11-06T12:45:56, Size 8644               */
 
 class QCP_LIB_DECL QCPFinancialData {
  public:
@@ -7042,7 +7042,7 @@ class QCP_LIB_DECL QCPFinancial
   enum WidthType {
     wtAbsolute  ///< width is in absolute pixels
     ,
-    wtAxisRectRatio  ///< width is given by a fraction of the axis rect size
+    wtAxisRectRatio  ///< width is given by a fraction of the axis rect Size
     ,
     wtPlotCoords  ///< width is in key coordinates and thus scales with the key
                   ///< axis range
@@ -7161,7 +7161,7 @@ Q_DECLARE_METATYPE(QCPFinancial::ChartStyle)
 /* end of 'src/plottables/plottable-financial.h' */
 
 /* including file 'src/plottables/plottable-errorbar.h' */
-/* modified 2022-11-06T12:45:56, size 7749              */
+/* modified 2022-11-06T12:45:56, Size 7749              */
 
 class QCP_LIB_DECL QCPErrorBarsData {
  public:
@@ -7312,7 +7312,7 @@ class QCP_LIB_DECL QCPErrorBars : public QCPAbstractPlottable,
 /* end of 'src/plottables/plottable-errorbar.h' */
 
 /* including file 'src/items/item-straightline.h' */
-/* modified 2022-11-06T12:45:56, size 3137        */
+/* modified 2022-11-06T12:45:56, Size 3137        */
 
 class QCP_LIB_DECL QCPItemStraightLine : public QCPAbstractItem {
   Q_OBJECT
@@ -7356,7 +7356,7 @@ class QCP_LIB_DECL QCPItemStraightLine : public QCPAbstractItem {
 /* end of 'src/items/item-straightline.h' */
 
 /* including file 'src/items/item-line.h'  */
-/* modified 2022-11-06T12:45:56, size 3429 */
+/* modified 2022-11-06T12:45:56, Size 3429 */
 
 class QCP_LIB_DECL QCPItemLine : public QCPAbstractItem {
   Q_OBJECT
@@ -7406,7 +7406,7 @@ class QCP_LIB_DECL QCPItemLine : public QCPAbstractItem {
 /* end of 'src/items/item-line.h' */
 
 /* including file 'src/items/item-curve.h' */
-/* modified 2022-11-06T12:45:56, size 3401 */
+/* modified 2022-11-06T12:45:56, Size 3401 */
 
 class QCP_LIB_DECL QCPItemCurve : public QCPAbstractItem {
   Q_OBJECT
@@ -7456,7 +7456,7 @@ class QCP_LIB_DECL QCPItemCurve : public QCPAbstractItem {
 /* end of 'src/items/item-curve.h' */
 
 /* including file 'src/items/item-rect.h'  */
-/* modified 2022-11-06T12:45:56, size 3710 */
+/* modified 2022-11-06T12:45:56, Size 3710 */
 
 class QCP_LIB_DECL QCPItemRect : public QCPAbstractItem {
   Q_OBJECT
@@ -7521,7 +7521,7 @@ class QCP_LIB_DECL QCPItemRect : public QCPAbstractItem {
 /* end of 'src/items/item-rect.h' */
 
 /* including file 'src/items/item-text.h'  */
-/* modified 2022-11-06T12:45:56, size 5576 */
+/* modified 2022-11-06T12:45:56, Size 5576 */
 
 class QCP_LIB_DECL QCPItemText : public QCPAbstractItem {
   Q_OBJECT
@@ -7629,7 +7629,7 @@ class QCP_LIB_DECL QCPItemText : public QCPAbstractItem {
 /* end of 'src/items/item-text.h' */
 
 /* including file 'src/items/item-ellipse.h' */
-/* modified 2022-11-06T12:45:56, size 3890   */
+/* modified 2022-11-06T12:45:56, Size 3890   */
 
 class QCP_LIB_DECL QCPItemEllipse : public QCPAbstractItem {
   Q_OBJECT
@@ -7700,7 +7700,7 @@ class QCP_LIB_DECL QCPItemEllipse : public QCPAbstractItem {
 /* end of 'src/items/item-ellipse.h' */
 
 /* including file 'src/items/item-pixmap.h' */
-/* modified 2022-11-06T12:45:56, size 4407  */
+/* modified 2022-11-06T12:45:56, Size 4407  */
 
 class QCP_LIB_DECL QCPItemPixmap : public QCPAbstractItem {
   Q_OBJECT
@@ -7781,7 +7781,7 @@ class QCP_LIB_DECL QCPItemPixmap : public QCPAbstractItem {
 /* end of 'src/items/item-pixmap.h' */
 
 /* including file 'src/items/item-tracer.h' */
-/* modified 2022-11-06T12:45:56, size 4811  */
+/* modified 2022-11-06T12:45:56, Size 4811  */
 
 class QCP_LIB_DECL QCPItemTracer : public QCPAbstractItem {
   Q_OBJECT
@@ -7798,7 +7798,7 @@ class QCP_LIB_DECL QCPItemTracer : public QCPAbstractItem {
   /// \endcond
  public:
   /*!
-    The different visual appearances a tracer item can have. Some styles size
+    The different visual appearances a tracer item can have. Some styles Size
     may be controlled with \ref setSize.
 
     \see setStyle
@@ -7806,7 +7806,7 @@ class QCP_LIB_DECL QCPItemTracer : public QCPAbstractItem {
   enum TracerStyle {
     tsNone  ///< The tracer is not visible
     ,
-    tsPlus  ///< A plus shaped crosshair with limited size
+    tsPlus  ///< A plus shaped crosshair with limited Size
     ,
     tsCrosshair  ///< A plus shaped crosshair which spans the complete axis rect
     ,
@@ -7872,7 +7872,7 @@ Q_DECLARE_METATYPE(QCPItemTracer::TracerStyle)
 /* end of 'src/items/item-tracer.h' */
 
 /* including file 'src/items/item-bracket.h' */
-/* modified 2022-11-06T12:45:56, size 3991   */
+/* modified 2022-11-06T12:45:56, Size 3991   */
 
 class QCP_LIB_DECL QCPItemBracket : public QCPAbstractItem {
   Q_OBJECT
@@ -7943,7 +7943,7 @@ Q_DECLARE_METATYPE(QCPItemBracket::BracketStyle)
 /* end of 'src/items/item-bracket.h' */
 
 /* including file 'src/polar/radialaxis.h'  */
-/* modified 2022-11-06T12:45:56, size 12227 */
+/* modified 2022-11-06T12:45:56, Size 12227 */
 
 class QCP_LIB_DECL QCPPolarAxisRadial : public QCPLayerable {
   Q_OBJECT
@@ -8217,7 +8217,7 @@ Q_DECLARE_METATYPE(QCPPolarAxisRadial::SelectablePart)
 /* end of 'src/polar/radialaxis.h' */
 
 /* including file 'src/polar/layoutelement-angularaxis.h' */
-/* modified 2022-11-06T12:45:56, size 13461               */
+/* modified 2022-11-06T12:45:56, Size 13461               */
 
 class QCP_LIB_DECL QCPPolarAxisAngular : public QCPLayoutElement {
   Q_OBJECT
@@ -8515,7 +8515,7 @@ Q_DECLARE_METATYPE(QCPPolarAxisAngular::SelectablePart)
 /* end of 'src/polar/layoutelement-angularaxis.h' */
 
 /* including file 'src/polar/polargrid.h'  */
-/* modified 2022-11-06T12:45:56, size 4506 */
+/* modified 2022-11-06T12:45:56, Size 4506 */
 
 class QCP_LIB_DECL QCPPolarGrid : public QCPLayerable {
   Q_OBJECT
@@ -8600,7 +8600,7 @@ Q_DECLARE_METATYPE(QCPPolarGrid::GridType)
 /* end of 'src/polar/polargrid.h' */
 
 /* including file 'src/polar/polargraph.h' */
-/* modified 2022-11-06T12:45:56, size 9606 */
+/* modified 2022-11-06T12:45:56, Size 9606 */
 
 class QCP_LIB_DECL QCPPolarLegendItem : public QCPAbstractLegendItem {
   Q_OBJECT

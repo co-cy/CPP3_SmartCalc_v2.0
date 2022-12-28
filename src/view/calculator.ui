@@ -58,10 +58,10 @@
            </sizepolicy>
           </property>
           <property name="minimumSize">
-           <size>
+           <Size>
             <width>0</width>
             <height>75</height>
-           </size>
+           </Size>
           </property>
           <property name="text">
            <string>123123</string>
@@ -88,10 +88,10 @@
              <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
-             <size>
+             <Size>
               <width>40</width>
               <height>20</height>
-             </size>
+             </Size>
             </property>
            </spacer>
           </item>
@@ -127,10 +127,10 @@
              <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
-             <size>
+             <Size>
               <width>40</width>
               <height>20</height>
-             </size>
+             </Size>
             </property>
            </spacer>
           </item>

@@ -26,7 +26,7 @@
 #include "qcustomplot.h"
 
 /* including file 'src/vector2d.cpp'       */
-/* modified 2022-11-06T12:45:56, size 7973 */
+/* modified 2022-11-06T12:45:56, Size 7973 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPVector2D
@@ -253,7 +253,7 @@ QCPVector2D &QCPVector2D::operator-=(const QCPVector2D &vector) {
 /* end of 'src/vector2d.cpp' */
 
 /* including file 'src/painter.cpp'        */
-/* modified 2022-11-06T12:45:56, size 8656 */
+/* modified 2022-11-06T12:45:56, Size 8656 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPPainter
@@ -460,7 +460,7 @@ void QCPPainter::makeNonCosmetic() {
 /* end of 'src/painter.cpp' */
 
 /* including file 'src/paintbuffer.cpp'     */
-/* modified 2022-11-06T12:45:56, size 18915 */
+/* modified 2022-11-06T12:45:56, Size 18915 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPAbstractPaintBuffer
@@ -474,7 +474,7 @@ void QCPPainter::makeNonCosmetic() {
   to provide in order to be usable by QCustomPlot.
 
   A paint buffer manages both a surface to draw onto, and the matching paint
-  device. The size of the surface can be changed via \ref setSize. External
+  device. The Size of the surface can be changed via \ref setSize. External
   classes (\ref QCustomPlot and \ref QCPLayer) request a painter via \ref
   startPainting and then perform the draw calls. Once the painting is complete,
   \ref donePainting is called, so the paint buffer implementation can do clean
@@ -525,7 +525,7 @@ void QCPPainter::makeNonCosmetic() {
 
 /*! \fn virtual void QCPAbstractPaintBuffer::reallocateBuffer() = 0
 
-  Reallocates the internal buffer with the currently configured size (\ref
+  Reallocates the internal buffer with the currently configured Size (\ref
   setSize) and device pixel ratio, if applicable (\ref setDevicePixelRatio). It
   is called as soon as any of those properties are changed on this paint buffer.
 
@@ -551,7 +551,7 @@ void QCPPainter::makeNonCosmetic() {
 /* end documentation of inline functions */
 
 /*!
-  Creates a paint buffer and initializes it with the provided \a size and \a
+  Creates a paint buffer and initializes it with the provided \a Size and \a
   devicePixelRatio.
 
   Subclasses must call their \ref reallocateBuffer implementation in their
@@ -564,13 +564,13 @@ QCPAbstractPaintBuffer::QCPAbstractPaintBuffer(const QSize &size,
 QCPAbstractPaintBuffer::~QCPAbstractPaintBuffer() {}
 
 /*!
-  Sets the paint buffer size.
+  Sets the paint buffer Size.
 
   The buffer is reallocated (by calling \ref reallocateBuffer), so any painters
   that were obtained by \ref startPainting are invalidated and must not be used
   after calling this method.
 
-  If \a size is already the current buffer size, this method does nothing.
+  If \a size is already the current buffer Size, this method does nothing.
 */
 void QCPAbstractPaintBuffer::setSize(const QSize &size) {
   if (mSize != size) {
@@ -638,7 +638,7 @@ void QCPAbstractPaintBuffer::setDevicePixelRatio(double ratio) {
 */
 
 /*!
-  Creates a pixmap paint buffer instancen with the specified \a size and \a
+  Creates a pixmap paint buffer instancen with the specified \a Size and \a
   devicePixelRatio, if applicable.
 */
 QCPPaintBufferPixmap::QCPPaintBufferPixmap(const QSize &size,
@@ -706,7 +706,7 @@ void QCPPaintBufferPixmap::reallocateBuffer() {
 */
 
 /*!
-  Creates a \ref QCPPaintBufferGlPbuffer instance with the specified \a size and
+  Creates a \ref QCPPaintBufferGlPbuffer instance with the specified \a Size and
   \a devicePixelRatio, if applicable.
 
   The parameter \a multisamples defines how many samples are used per pixel.
@@ -796,7 +796,7 @@ void QCPPaintBufferGlPbuffer::reallocateBuffer() {
 */
 
 /*!
-  Creates a \ref QCPPaintBufferGlFbo instance with the specified \a size and \a
+  Creates a \ref QCPPaintBufferGlFbo instance with the specified \a Size and \a
   devicePixelRatio, if applicable.
 
   All frame buffer objects shall share one OpenGL context and paint device,
@@ -914,7 +914,7 @@ void QCPPaintBufferGlFbo::reallocateBuffer() {
     return;
   }
 
-  // create new fbo with appropriate size:
+  // create new fbo with appropriate Size:
   context->makeCurrent(context->surface());
   QOpenGLFramebufferObjectFormat frameBufferFormat;
   frameBufferFormat.setSamples(context->format().samples());
@@ -932,7 +932,7 @@ void QCPPaintBufferGlFbo::reallocateBuffer() {
 /* end of 'src/paintbuffer.cpp' */
 
 /* including file 'src/layer.cpp'           */
-/* modified 2022-11-06T12:45:56, size 37615 */
+/* modified 2022-11-06T12:45:56, Size 37615 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPLayer
@@ -1811,7 +1811,7 @@ void QCPLayerable::wheelEvent(QWheelEvent *event) { event->ignore(); }
 /* end of 'src/layer.cpp' */
 
 /* including file 'src/axis/range.cpp'      */
-/* modified 2022-11-06T12:45:56, size 12221 */
+/* modified 2022-11-06T12:45:56, Size 12221 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPRange
@@ -1827,9 +1827,9 @@ void QCPLayerable::wheelEvent(QWheelEvent *event) { event->ignore(); }
 
 /* start of documentation of inline functions */
 
-/*! \fn double QCPRange::size() const
+/*! \fn double QCPRange::Size() const
 
-  Returns the size of the range, i.e. \a upper-\a lower
+  Returns the Size of the range, i.e. \a upper-\a lower
 */
 
 /*! \fn double QCPRange::center() const
@@ -1871,7 +1871,7 @@ void QCPLayerable::wheelEvent(QWheelEvent *event) { event->ignore(); }
 /* end of documentation of inline functions */
 
 /*!
-  Minimum range size (\a upper - \a lower) the range changing functions will
+  Minimum range Size (\a upper - \a lower) the range changing functions will
   accept. Smaller intervals would cause errors due to the 11-bit exponent of
   double precision numbers, corresponding to a minimum magnitude of roughly
   1e-308.
@@ -1987,7 +1987,7 @@ QCPRange QCPRange::expanded(double includeCoord) const {
 
 /*!
   Returns this range, possibly modified to not exceed the bounds provided as \a
-  lowerBound and \a upperBound. If possible, the size of the current range is
+  lowerBound and \a upperBound. If possible, the Size of the current range is
   preserved in the process.
 
   If the range shall only be bounded at the lower side, you can set \a
@@ -2087,8 +2087,8 @@ QCPRange QCPRange::sanitizedForLinScale() const {
   as QCPRange::maxRange and QCPRange::minRange.
   A valid range means:
   \li range bounds within -maxRange and maxRange
-  \li range size above minRange
-  \li range size below maxRange
+  \li range Size above minRange
+  \li range Size below maxRange
 */
 bool QCPRange::validRange(double lower, double upper) {
   return (lower > -maxRange && upper < maxRange &&
@@ -2103,8 +2103,8 @@ bool QCPRange::validRange(double lower, double upper) {
   as QCPRange::maxRange and QCPRange::minRange.
   A valid range means:
   \li range bounds within -maxRange and maxRange
-  \li range size above minRange
-  \li range size below maxRange
+  \li range Size above minRange
+  \li range Size below maxRange
 */
 bool QCPRange::validRange(const QCPRange &range) {
   return (range.lower > -maxRange && range.upper < maxRange &&
@@ -2116,7 +2116,7 @@ bool QCPRange::validRange(const QCPRange &range) {
 /* end of 'src/axis/range.cpp' */
 
 /* including file 'src/selection.cpp'       */
-/* modified 2022-11-06T12:45:56, size 21837 */
+/* modified 2022-11-06T12:45:56, Size 21837 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPDataRange
@@ -2153,7 +2153,7 @@ bool QCPRange::validRange(const QCPRange &range) {
 
 /* start documentation of inline functions */
 
-/*! \fn int QCPDataRange::size() const
+/*! \fn int QCPDataRange::Size() const
 
   Returns the number of data points described by this data range. This is equal
   to the end index minus the begin index.
@@ -2164,7 +2164,7 @@ bool QCPRange::validRange(const QCPRange &range) {
 /*! \fn int QCPDataRange::length() const
 
   Returns the number of data points described by this data range. Equivalent to
-  \ref size.
+  \ref Size.
 */
 
 /*! \fn void QCPDataRange::setBegin(int begin)
@@ -2207,7 +2207,7 @@ bool QCPRange::validRange(const QCPRange &range) {
   Returns whether this range is empty, i.e. whether its begin index equals its
   end index.
 
-  \see size, length
+  \see Size, length
 */
 
 /*! \fn QCPDataRange QCPDataRange::adjusted(int changeBegin, int changeEnd)
@@ -2708,7 +2708,7 @@ QCPDataSelection QCPDataSelection::inverse(
 /* end of 'src/selection.cpp' */
 
 /* including file 'src/selectionrect.cpp'  */
-/* modified 2022-11-06T12:45:56, size 9215 */
+/* modified 2022-11-06T12:45:56, Size 9215 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPSelectionRect
@@ -2764,7 +2764,7 @@ QCPDataSelection QCPDataSelection::inverse(
 /*! \fn void QCPSelectionRect::changed(const QRect &rect, QMouseEvent *event);
 
   This signal is emitted while the selection rect interaction is ongoing and the
-  \a rect has changed its size due to the user moving the mouse.
+  \a rect has changed its Size due to the user moving the mouse.
 
   Note that \a rect may have a negative width or height, if the selection is
   being dragged to the upper or left side of the selection rect origin.
@@ -2925,7 +2925,7 @@ void QCPSelectionRect::draw(QCPPainter *painter) {
 /* end of 'src/selectionrect.cpp' */
 
 /* including file 'src/layout.cpp'          */
-/* modified 2022-11-06T12:45:56, size 78863 */
+/* modified 2022-11-06T12:45:56, Size 78863 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPMarginGroup
@@ -2936,7 +2936,7 @@ void QCPSelectionRect::draw(QCPPainter *painter) {
   multiple layout elements.
 
   QCPMarginGroup allows you to tie a margin side of two or more layout elements
-  together, such that they will all have the same size, based on the largest
+  together, such that they will all have the same Size, based on the largest
   required margin in the group.
 
   \n
@@ -2946,7 +2946,7 @@ void QCPSelectionRect::draw(QCPPainter *painter) {
   In certain situations it is desirable that margins at specific sides are
   synchronized across layout elements. For example, if one QCPAxisRect is below
   another one in a grid layout, it will provide a cleaner look to the user if
-  the left and right margins of the two axis rects are of the same size. The
+  the left and right margins of the two axis rects are of the same Size. The
   left axis of the top axis rect will then be at the same horizontal position as
   the left axis of the lower axis rect, making them appear aligned. The same
   applies for the right axes. This is what QCPMarginGroup makes possible.
@@ -3101,7 +3101,7 @@ void QCPMarginGroup::removeChild(QCP::MarginSide side,
 
   Thus in QCustomPlot one can divide layout elements into two categories: The
   ones that are invisible by themselves, because they don't draw anything. Their
-  only purpose is to manage the position and size of other layout elements. This
+  only purpose is to manage the position and Size of other layout elements. This
   category of layout elements usually use QCPLayout as base class. Then there is
   the category of layout elements which actually draw something. For example,
   QCPAxisRect, QCPLegend and QCPTextElement are of this category. This does not
@@ -3140,7 +3140,7 @@ void QCPMarginGroup::removeChild(QCP::MarginSide side,
   Returns the outer rect of this layout element. The outer rect is the inner
   rect expanded by the margins (\ref setMargins, \ref setAutoMargins). The outer
   rect is used (and set via \ref setOuterRect) by the parent \ref QCPLayout to
-  control the size of this layout element.
+  control the Size of this layout element.
 
   \see rect
 */
@@ -3177,7 +3177,7 @@ QCPLayoutElement::~QCPLayoutElement() {
 
 /*!
   Sets the outer rect of this layout element. If the layout element is inside a
-  layout, the layout sets the position and size of this layout element using
+  layout, the layout sets the position and Size of this layout element using
   this function.
 
   Calling this function externally has no effect, since the layout will
@@ -3248,14 +3248,14 @@ void QCPLayoutElement::setAutoMargins(QCP::MarginSides sides) {
 }
 
 /*!
-  Sets the minimum size of this layout element. A parent layout tries to respect
-  the \a size here by changing row/column sizes in the layout accordingly.
+  Sets the minimum Size of this layout element. A parent layout tries to respect
+  the \a Size here by changing row/column sizes in the layout accordingly.
 
-  If the parent layout size is not sufficient to satisfy all minimum size
-  constraints of its child layout elements, the layout may set a size that is
-  actually smaller than \a size. QCustomPlot propagates the layout's size
-  constraints to the outside by setting its own minimum QWidget size
-  accordingly, so violations of \a size should be exceptions.
+  If the parent layout Size is not sufficient to satisfy all minimum size
+  constraints of its child layout elements, the layout may set a Size that is
+  actually smaller than \a size. QCustomPlot propagates the layout's Size
+  constraints to the outside by setting its own minimum QWidget Size
+  accordingly, so violations of \a Size should be exceptions.
 
   Whether this constraint applies to the inner or the outer rect can be
   specified with \ref setSizeConstraintRect (see \ref rect and \ref outerRect).
@@ -3269,7 +3269,7 @@ void QCPLayoutElement::setMinimumSize(const QSize &size) {
 
 /*! \overload
 
-  Sets the minimum size of this layout element.
+  Sets the minimum Size of this layout element.
 
   Whether this constraint applies to the inner or the outer rect can be
   specified with \ref setSizeConstraintRect (see \ref rect and \ref outerRect).
@@ -3279,8 +3279,8 @@ void QCPLayoutElement::setMinimumSize(int width, int height) {
 }
 
 /*!
-  Sets the maximum size of this layout element. A parent layout tries to respect
-  the \a size here by changing row/column sizes in the layout accordingly.
+  Sets the maximum Size of this layout element. A parent layout tries to respect
+  the \a Size here by changing row/column sizes in the layout accordingly.
 
   Whether this constraint applies to the inner or the outer rect can be
   specified with \ref setSizeConstraintRect (see \ref rect and \ref outerRect).
@@ -3294,7 +3294,7 @@ void QCPLayoutElement::setMaximumSize(const QSize &size) {
 
 /*! \overload
 
-  Sets the maximum size of this layout element.
+  Sets the maximum Size of this layout element.
 
   Whether this constraint applies to the inner or the outer rect can be
   specified with \ref setSizeConstraintRect (see \ref rect and \ref outerRect).
@@ -3304,7 +3304,7 @@ void QCPLayoutElement::setMaximumSize(int width, int height) {
 }
 
 /*!
-  Sets to which rect of a layout element the size constraints apply. Size
+  Sets to which rect of a layout element the Size constraints apply. Size
   constraints can be set via \ref setMinimumSize and \ref setMaximumSize.
 
   The outer rect (\ref outerRect) includes the margins (e.g. in the case of a
@@ -3412,20 +3412,20 @@ void QCPLayoutElement::update(UpdatePhase phase) {
 }
 
 /*!
-  Returns the suggested minimum size this layout element (the \ref outerRect)
-  may be compressed to, if no manual minimum size is set.
+  Returns the suggested minimum Size this layout element (the \ref outerRect)
+  may be compressed to, if no manual minimum Size is set.
 
-  if a minimum size (\ref setMinimumSize) was not set manually, parent layouts
-  use the returned size (usually indirectly through \ref
-  QCPLayout::getFinalMinimumOuterSize) to determine the minimum allowed size of
+  if a minimum Size (\ref setMinimumSize) was not set manually, parent layouts
+  use the returned Size (usually indirectly through \ref
+  QCPLayout::getFinalMinimumOuterSize) to determine the minimum allowed Size of
   this layout element.
 
-  A manual minimum size is considered set if it is non-zero.
+  A manual minimum Size is considered set if it is non-zero.
 
   The default implementation simply returns the sum of the horizontal margins
   for the width and the sum of the vertical margins for the height.
   Reimplementations may use their detailed knowledge about the layout element's
-  content to provide size hints.
+  content to provide Size hints.
 */
 QSize QCPLayoutElement::minimumOuterSizeHint() const {
   return {mMargins.left() + mMargins.right(),
@@ -3433,20 +3433,20 @@ QSize QCPLayoutElement::minimumOuterSizeHint() const {
 }
 
 /*!
-  Returns the suggested maximum size this layout element (the \ref outerRect)
-  may be expanded to, if no manual maximum size is set.
+  Returns the suggested maximum Size this layout element (the \ref outerRect)
+  may be expanded to, if no manual maximum Size is set.
 
-  if a maximum size (\ref setMaximumSize) was not set manually, parent layouts
-  use the returned size (usually indirectly through \ref
-  QCPLayout::getFinalMaximumOuterSize) to determine the maximum allowed size of
+  if a maximum Size (\ref setMaximumSize) was not set manually, parent layouts
+  use the returned Size (usually indirectly through \ref
+  QCPLayout::getFinalMaximumOuterSize) to determine the maximum allowed Size of
   this layout element.
 
-  A manual maximum size is considered set if it is smaller than Qt's \c
+  A manual maximum Size is considered set if it is smaller than Qt's \c
   QWIDGETSIZE_MAX.
 
   The default implementation simply returns \c QWIDGETSIZE_MAX for both width
-  and height, implying no suggested maximum size. Reimplementations may use
-  their detailed knowledge about the layout element's content to provide size
+  and height, implying no suggested maximum Size. Reimplementations may use
+  their detailed knowledge about the layout element's content to provide Size
   hints.
 */
 QSize QCPLayoutElement::maximumOuterSizeHint() const {
@@ -3508,7 +3508,7 @@ void QCPLayoutElement::parentPlotInitialized(QCustomPlot *parentPlot) {
 
 /*! \internal
 
-  Returns the margin size for this \a side. It is used if automatic margins is
+  Returns the margin Size for this \a side. It is used if automatic margins is
   enabled for this \a side (see \ref setAutoMargins). If a minimum margin was
   set with \ref setMinimumMargins, the returned value will not be smaller than
   the specified minimum margin.
@@ -3543,7 +3543,7 @@ void QCPLayoutElement::layoutChanged() {}
   \brief The abstract base class for layouts
 
   This is an abstract base class for layout elements whose main purpose is to
-  define the position and size of other child layout elements. In most cases,
+  define the position and Size of other child layout elements. In most cases,
   layouts don't draw anything themselves (but there are exceptions to this, e.g.
   QCPLegend).
 
@@ -3721,7 +3721,7 @@ void QCPLayout::clear() {
 }
 
 /*!
-  Subclasses call this method to report changed (minimum/maximum) size
+  Subclasses call this method to report changed (minimum/maximum) Size
   constraints.
 
   If the parent of this layout is again a QCPLayout, forwards the call to the
@@ -3806,24 +3806,24 @@ void QCPLayout::releaseElement(QCPLayoutElement *el) {
 
   It calculates the sizes of one-dimensional sections with provided constraints
   on maximum section sizes, minimum section sizes, relative stretch factors and
-  the final total size of all sections.
+  the final total Size of all sections.
 
   The QVector entries refer to the sections. Thus all QVectors must have the
-  same size.
+  same Size.
 
-  \a maxSizes gives the maximum allowed size of each section. If there shall be
-  no maximum size imposed, set all vector values to Qt's QWIDGETSIZE_MAX.
+  \a maxSizes gives the maximum allowed Size of each section. If there shall be
+  no maximum Size imposed, set all vector values to Qt's QWIDGETSIZE_MAX.
 
-  \a minSizes gives the minimum allowed size of each section. If there shall be
-  no minimum size imposed, set all vector values to zero. If the \a minSizes
+  \a minSizes gives the minimum allowed Size of each section. If there shall be
+  no minimum Size imposed, set all vector values to zero. If the \a minSizes
   entries add up to a value greater than \a totalSize, sections will be scaled
   smaller than the proposed minimum sizes. (In other words, not exceeding the
-  allowed total size is taken to be more important than not going below minimum
+  allowed total Size is taken to be more important than not going below minimum
   section sizes.)
 
   \a stretchFactors give the relative proportions of the sections to each other.
   If all sections shall be scaled equally, set all values equal. If the first
-  section shall be double the size of each individual other section, set the
+  section shall be double the Size of each individual other section, set the
   first number of \a stretchFactors to double the value of the other individual
   values (e.g. {2, 1, 1, 1}).
 
@@ -3847,7 +3847,7 @@ QVector<int> QCPLayout::getSectionSizes(QVector<int> maxSizes,
   if (stretchFactors.isEmpty()) return QVector<int>();
   int sectionCount = stretchFactors.size();
   QVector<double> sectionSizes(sectionCount);
-  // if provided total size is forced smaller than total minimum size, ignore
+  // if provided total size is forced smaller than total minimum Size, ignore
   // minimum sizes (squeeze sections):
   int minSizeSum = 0;
   for (int i = 0; i < sectionCount; ++i) minSizeSum += minSizes.at(i);
@@ -3889,9 +3889,9 @@ QVector<int> QCPLayout::getSectionSizes(QVector<int> maxSizes,
           nextId = secId;
         }
       }
-      // check if that maximum is actually within the bounds of the total size
+      // check if that maximum is actually within the bounds of the total Size
       // (i.e. can we stretch all remaining sections so far that the found
-      // section actually hits its maximum, without exceeding the total size
+      // section actually hits its maximum, without exceeding the total Size
       // when we add up all sections)
       double stretchFactorSum = 0;
       foreach (int secId, unfinishedSections)
@@ -3899,7 +3899,7 @@ QVector<int> QCPLayout::getSectionSizes(QVector<int> maxSizes,
       double nextMaxLimit = freeSize / stretchFactorSum;
       if (nextMax <
           nextMaxLimit)  // next maximum is actually hit, move forward to that
-                         // point and fix the size of that section
+                         // point and fix the Size of that section
       {
         foreach (int secId, unfinishedSections) {
           sectionSizes[secId] +=
@@ -3947,7 +3947,7 @@ QVector<int> QCPLayout::getSectionSizes(QVector<int> maxSizes,
           unfinishedSections.append(i);
         else
           freeSize -=
-              sectionSizes.at(i);  // remove size of minimum locked sections
+              sectionSizes.at(i);  // remove Size of minimum locked sections
                                    // from available space in next round
       }
       // reset all section sizes to zero that are in unfinished sections (all
@@ -3970,13 +3970,13 @@ QVector<int> QCPLayout::getSectionSizes(QVector<int> maxSizes,
 
   This is a helper function for the implementation of subclasses.
 
-  It returns the minimum size that should finally be used for the outer rect of
+  It returns the minimum Size that should finally be used for the outer rect of
   the passed layout element \a el.
 
-  It takes into account whether a manual minimum size is set (\ref
-  QCPLayoutElement::setMinimumSize), which size constraint is set (\ref
-  QCPLayoutElement::setSizeConstraintRect), as well as the minimum size hint, if
-  no manual minimum size was set (\ref QCPLayoutElement::minimumOuterSizeHint).
+  It takes into account whether a manual minimum Size is set (\ref
+  QCPLayoutElement::setMinimumSize), which Size constraint is set (\ref
+  QCPLayoutElement::setSizeConstraintRect), as well as the minimum Size hint, if
+  no manual minimum Size was set (\ref QCPLayoutElement::minimumOuterSizeHint).
 */
 QSize QCPLayout::getFinalMinimumOuterSize(const QCPLayoutElement *el) {
   QSize minOuterHint = el->minimumOuterSizeHint();
@@ -3999,13 +3999,13 @@ QSize QCPLayout::getFinalMinimumOuterSize(const QCPLayoutElement *el) {
 
   This is a helper function for the implementation of subclasses.
 
-  It returns the maximum size that should finally be used for the outer rect of
+  It returns the maximum Size that should finally be used for the outer rect of
   the passed layout element \a el.
 
-  It takes into account whether a manual maximum size is set (\ref
-  QCPLayoutElement::setMaximumSize), which size constraint is set (\ref
-  QCPLayoutElement::setSizeConstraintRect), as well as the maximum size hint, if
-  no manual maximum size was set (\ref QCPLayoutElement::maximumOuterSizeHint).
+  It takes into account whether a manual maximum Size is set (\ref
+  QCPLayoutElement::setMaximumSize), which Size constraint is set (\ref
+  QCPLayoutElement::setSizeConstraintRect), as well as the maximum Size hint, if
+  no manual maximum Size was set (\ref QCPLayoutElement::maximumOuterSizeHint).
 */
 QSize QCPLayout::getFinalMaximumOuterSize(const QCPLayoutElement *el) {
   QSize maxOuterHint = el->maximumOuterSizeHint();
@@ -4212,7 +4212,7 @@ void QCPLayoutGrid::setColumnStretchFactor(int column, double factor) {
 }
 
 /*!
-  Sets the stretch \a factors of all columns. \a factors must have the size \ref
+  Sets the stretch \a factors of all columns. \a factors must have the Size \ref
   columnCount.
 
   Stretch factors control the relative sizes of rows and columns. Cells will not
@@ -4266,7 +4266,7 @@ void QCPLayoutGrid::setRowStretchFactor(int row, double factor) {
 }
 
 /*!
-  Sets the stretch \a factors of all rows. \a factors must have the size \ref
+  Sets the stretch \a factors of all rows. \a factors must have the Size \ref
   rowCount.
 
   Stretch factors control the relative sizes of rows and columns. Cells will not
@@ -4777,7 +4777,7 @@ void QCPLayoutGrid::getMaximumRowColSizes(QVector<int> *maxColWidths,
   &rect). If the first method is used, the inset placement will default to \ref
   ipBorderAligned and the element will be aligned according to the \a alignment
   parameter. The second method defaults to \ref ipFree and allows placing
-  elements at arbitrary position and size, defined by \a rect.
+  elements at arbitrary position and Size, defined by \a rect.
 
   The alignment or rect can be set via \ref setInsetAlignment or \ref
   setInsetRect, respectively.
@@ -4883,7 +4883,7 @@ void QCPLayoutInset::setInsetAlignment(int index, Qt::Alignment alignment) {
 
 /*!
   If the inset placement (\ref setInsetPlacement) is \ref ipFree, this function
-  is used to set the position and size of the element with the specified \a
+  is used to set the position and Size of the element with the specified \a
   index to \a rect.
 
   \a rect is given in fractions of the whole inset layout rect. So an inset with
@@ -5042,7 +5042,7 @@ void QCPLayoutInset::addElement(QCPLayoutElement *element,
 /*!
   Adds the specified \a element to the layout as an inset with free
   positioning/sizing (\ref setInsetAlignment is initialized with \ref ipFree).
-  The position and size is set to \a rect.
+  The position and Size is set to \a rect.
 
   \a rect is given in fractions of the whole inset layout rect. So an inset with
   rect (0, 0, 1, 1) will span the entire layout. An inset with rect (0.6, 0.1,
@@ -5066,7 +5066,7 @@ void QCPLayoutInset::addElement(QCPLayoutElement *element, const QRectF &rect) {
 /* end of 'src/layout.cpp' */
 
 /* including file 'src/lineending.cpp'      */
-/* modified 2022-11-06T12:45:56, size 11189 */
+/* modified 2022-11-06T12:45:56, Size 11189 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPLineEnding
@@ -5117,7 +5117,7 @@ void QCPLineEnding::setStyle(QCPLineEnding::EndingStyle style) {
 
 /*!
   Sets the width of the ending decoration, if the style supports it. On arrows,
-  for example, the width defines the size perpendicular to the arrow's pointing
+  for example, the width defines the Size perpendicular to the arrow's pointing
   direction.
 
   \see setLength
@@ -5126,7 +5126,7 @@ void QCPLineEnding::setWidth(double width) { mWidth = width; }
 
 /*!
   Sets the length of the ending decoration, if the style supports it. On arrows,
-  for example, the length defines the size in pointing direction.
+  for example, the length defines the Size in pointing direction.
 
   \see setWidth
 */
@@ -5335,7 +5335,7 @@ void QCPLineEnding::draw(QCPPainter *painter, const QCPVector2D &pos,
 /* end of 'src/lineending.cpp' */
 
 /* including file 'src/axis/labelpainter.cpp' */
-/* modified 2022-11-06T12:45:56, size 27519   */
+/* modified 2022-11-06T12:45:56, Size 27519   */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPLabelPainterPrivate
@@ -5458,7 +5458,7 @@ void QCPLabelPainterPrivate::drawTickLabel(QCPPainter *painter,
 
 /*! \internal
 
-  Returns the size ("margin" in QCPAxisRect context, so measured perpendicular
+  Returns the Size ("margin" in QCPAxisRect context, so measured perpendicular
   to the axis backbone direction) needed to fit the axis.
 */
 /* TODO: needed?
@@ -5482,7 +5482,7 @@ tickLabelsSize.height() : tickLabelsSize.width(); result += tickLabelPadding;
     }
   }
 
-  // calculate size of axis label (only height needed, because left/right labels
+  // calculate Size of axis label (only height needed, because left/right labels
 are rotated by 90 degrees): if (!label.isEmpty())
   {
     QFontMetrics fontMetrics(labelFont);
@@ -5538,7 +5538,7 @@ QByteArray QCPLabelPainterPrivate::generateLabelParameterHash() const {
   coordinate), at which the label should be drawn.
 
   In order to later draw the axis label in a place that doesn't overlap with the
-  tick labels, the largest tick label size is needed. This is acquired by
+  tick labels, the largest tick label Size is needed. This is acquired by
   passing a \a tickLabelsSize to the \ref drawTickLabel calls during the process
   of drawing all tick labels of one axis. In every call, \a tickLabelsSize is
   expanded, if the drawn label exceeds the value \a tickLabelsSize currently
@@ -5885,7 +5885,7 @@ mLabelCache.contains(text)) // label caching enabled and have cached label
   {
     const CachedLabel *cachedLabel = mLabelCache.object(text);
     finalSize =
-cachedLabel->pixmap.size()/mParentPlot->bufferDevicePixelRatio(); } else //
+cachedLabel->pixmap.Size()/mParentPlot->bufferDevicePixelRatio(); } else //
 label caching disabled or no label with this text cached:
   {
     // TODO: LabelData labelData = getTickLabelData(font, text);
@@ -5904,7 +5904,7 @@ QCPLabelPainterPrivate::CachedLabel *QCPLabelPainterPrivate::createCachedLabel(
     const LabelData &labelData) const {
   CachedLabel *result = new CachedLabel;
 
-  // allocate pixmap with the correct size and pixel ratio:
+  // allocate pixmap with the correct Size and pixel ratio:
   if (!qFuzzyCompare(1.0, mParentPlot->bufferDevicePixelRatio())) {
     result->pixmap = QPixmap(labelData.rotatedTotalBounds.size() *
                              mParentPlot->bufferDevicePixelRatio());
@@ -6030,7 +6030,7 @@ void QCPLabelPainterPrivate::analyzeFontMetrics() {
 /* end of 'src/axis/labelpainter.cpp' */
 
 /* including file 'src/axis/axisticker.cpp' */
-/* modified 2022-11-06T12:45:56, size 18693 */
+/* modified 2022-11-06T12:45:56, Size 18693 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPAxisTicker
@@ -6111,7 +6111,7 @@ QCPAxisTicker::QCPAxisTicker()
 QCPAxisTicker::~QCPAxisTicker() {}
 
 /*!
-  Sets which strategy the axis ticker follows when choosing the size of the tick
+  Sets which strategy the axis ticker follows when choosing the Size of the tick
   step. For the available strategies, see \ref TickStepStrategy.
 */
 void QCPAxisTicker::setTickStepStrategy(
@@ -6504,7 +6504,7 @@ double QCPAxisTicker::cleanMantissa(double input) const {
 /* end of 'src/axis/axisticker.cpp' */
 
 /* including file 'src/axis/axistickerdatetime.cpp' */
-/* modified 2022-11-06T12:45:56, size 18829         */
+/* modified 2022-11-06T12:45:56, Size 18829         */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPAxisTickerDateTime
@@ -6956,7 +6956,7 @@ double QCPAxisTickerDateTime::dateTimeToKey(const QDate &date,
 /* end of 'src/axis/axistickerdatetime.cpp' */
 
 /* including file 'src/axis/axistickertime.cpp' */
-/* modified 2022-11-06T12:45:56, size 11745     */
+/* modified 2022-11-06T12:45:56, Size 11745     */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPAxisTickerTime
@@ -7249,7 +7249,7 @@ void QCPAxisTickerTime::replaceUnit(QString &text,
 /* end of 'src/axis/axistickertime.cpp' */
 
 /* including file 'src/axis/axistickerfixed.cpp' */
-/* modified 2022-11-06T12:45:56, size 5575       */
+/* modified 2022-11-06T12:45:56, Size 5575       */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPAxisTickerFixed
@@ -7357,7 +7357,7 @@ double QCPAxisTickerFixed::getTickStep(const QCPRange &range) {
 /* end of 'src/axis/axistickerfixed.cpp' */
 
 /* including file 'src/axis/axistickertext.cpp' */
-/* modified 2022-11-06T12:45:56, size 8742      */
+/* modified 2022-11-06T12:45:56, Size 8742      */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPAxisTickerText
@@ -7573,7 +7573,7 @@ QVector<double> QCPAxisTickerText::createTickVector(double tickStep,
 /* end of 'src/axis/axistickertext.cpp' */
 
 /* including file 'src/axis/axistickerpi.cpp' */
-/* modified 2022-11-06T12:45:56, size 11177   */
+/* modified 2022-11-06T12:45:56, Size 11177   */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPAxisTickerPi
@@ -7867,7 +7867,7 @@ QString QCPAxisTickerPi::unicodeSubscript(int number) const {
 /* end of 'src/axis/axistickerpi.cpp' */
 
 /* including file 'src/axis/axistickerlog.cpp' */
-/* modified 2022-11-06T12:45:56, size 7890     */
+/* modified 2022-11-06T12:45:56, Size 7890     */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPAxisTickerLog
@@ -8025,7 +8025,7 @@ QVector<double> QCPAxisTickerLog::createTickVector(double tickStep,
 /* end of 'src/axis/axistickerlog.cpp' */
 
 /* including file 'src/axis/axis.cpp'       */
-/* modified 2022-11-06T12:45:56, size 99911 */
+/* modified 2022-11-06T12:45:56, Size 99911 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPGrid
@@ -8641,7 +8641,7 @@ void QCPAxis::setRange(double lower, double upper) {
   Sets the range of the axis.
 
   The \a position coordinate indicates together with the \a alignment parameter,
-  where the new range will be positioned. \a size defines the size of the new
+  where the new range will be positioned. \a Size defines the size of the new
   axis range. \a alignment may be Qt::AlignLeft, Qt::AlignRight or
   Qt::AlignCenter. This will cause the left border, right border, or center of
   the range to be aligned with \a position. Any other values of \a alignment
@@ -9238,7 +9238,7 @@ void QCPAxis::moveRange(double diff) {
 /*!
   Scales the range of this axis by \a factor around the center of the current
   axis range. For example, if \a factor is 2.0, then the axis range will double
-  its size, and the point at the axis range center won't have changed its
+  its Size, and the point at the axis range center won't have changed its
   position in the QCustomPlot widget (i.e. coordinates around the center will
   have moved symmetrically closer).
 
@@ -9253,7 +9253,7 @@ void QCPAxis::scaleRange(double factor) {
 
   Scales the range of this axis by \a factor around the coordinate \a center.
   For example, if \a factor is 2.0, \a center is 1.0, then the axis range will
-  double its size, and the point at coordinate 1.0 won't have changed its
+  double its Size, and the point at coordinate 1.0 won't have changed its
   position in the QCustomPlot widget (i.e. coordinates around 1.0 will have
   moved symmetrically closer to 1.0).
 
@@ -9968,7 +9968,7 @@ QColor QCPAxis::getLabelColor() const {
   well.
 
   The margin consists of the outward tick length, tick label padding, tick label
-  size, label padding, label size, and padding.
+  Size, label padding, label size, and padding.
 
   The margin is cached internally, so repeated calls while leaving the axis
   range, fonts, etc. unchanged are very fast.
@@ -9997,7 +9997,7 @@ int QCPAxis::calculateMargin() {
     }
   }
   // transfer all properties of this axis to QCPAxisPainterPrivate which it
-  // needs to calculate the size. Note that some axis painter properties are
+  // needs to calculate the Size. Note that some axis painter properties are
   // already set by direct feed-through with QCPAxis setters
   mAxisPainter->type = mAxisType;
   mAxisPainter->labelFont = getLabelFont();
@@ -10197,7 +10197,7 @@ void QCPAxisPainterPrivate::draw(QCPPainter *painter) {
   }
   QSize tickLabelsSize(
       0,
-      0);  // size of largest tick label, for offset calculation of axis label
+      0);  // Size of largest tick label, for offset calculation of axis label
   if (!tickLabels.isEmpty()) {
     if (tickLabelSide == QCPAxis::lsOutside) margin += tickLabelPadding;
     painter->setFont(tickLabelFont);
@@ -10330,7 +10330,7 @@ void QCPAxisPainterPrivate::draw(QCPPainter *painter) {
 
 /*! \internal
 
-  Returns the size ("margin" in QCPAxisRect context, so measured perpendicular
+  Returns the Size ("margin" in QCPAxisRect context, so measured perpendicular
   to the axis backbone direction) needed to fit the axis.
 */
 int QCPAxisPainterPrivate::size() {
@@ -10346,7 +10346,7 @@ int QCPAxisPainterPrivate::size() {
   if (!tickPositions.isEmpty())
     result += qMax(0, qMax(tickLengthOut, subTickLengthOut));
 
-  // calculate size of tick labels:
+  // calculate Size of tick labels:
   if (tickLabelSide == QCPAxis::lsOutside) {
     QSize tickLabelsSize(0, 0);
     if (!tickLabels.isEmpty()) {
@@ -10359,7 +10359,7 @@ int QCPAxisPainterPrivate::size() {
     }
   }
 
-  // calculate size of axis label (only height needed, because left/right labels
+  // calculate Size of axis label (only height needed, because left/right labels
   // are rotated by 90 degrees):
   if (!label.isEmpty()) {
     QFontMetrics fontMetrics(labelFont);
@@ -10414,7 +10414,7 @@ QByteArray QCPAxisPainterPrivate::generateLabelParameterHash() const {
   coordinate), at which the label should be drawn.
 
   In order to later draw the axis label in a place that doesn't overlap with the
-  tick labels, the largest tick label size is needed. This is acquired by
+  tick labels, the largest tick label Size is needed. This is acquired by
   passing a \a tickLabelsSize to the \ref drawTickLabel calls during the process
   of drawing all tick labels of one axis. In every call, \a tickLabelsSize is
   expanded, if the drawn label exceeds the value \a tickLabelsSize currently
@@ -10857,7 +10857,7 @@ void QCPAxisPainterPrivate::getMaxTickLabelSize(const QFont &font,
 /* end of 'src/axis/axis.cpp' */
 
 /* including file 'src/scatterstyle.cpp'    */
-/* modified 2022-11-06T12:45:56, size 17466 */
+/* modified 2022-11-06T12:45:56, Size 17466 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPScatterStyle
@@ -10866,14 +10866,14 @@ void QCPAxisPainterPrivate::getMaxTickLabelSize(const QFont &font,
 /*! \class QCPScatterStyle
   \brief Represents the visual appearance of scatter points
 
-  This class holds information about shape, color and size of scatter points. In
+  This class holds information about shape, color and Size of scatter points. In
   plottables like QCPGraph it is used to store how scatter points shall be
   drawn. For example, \ref QCPGraph::setScatterStyle takes a QCPScatterStyle
   instance.
 
   A scatter style consists of a shape (\ref setShape), a line color (\ref
   setPen) and possibly a fill (\ref setBrush), if the shape provides a fillable
-  area. Further, the size of the shape can be controlled with \ref setSize.
+  area. Further, the Size of the shape can be controlled with \ref setSize.
 
   \section QCPScatterStyle-defining Specifying a scatter style
 
@@ -10890,7 +10890,7 @@ void QCPAxisPainterPrivate::getMaxTickLabelSize(const QFont &font,
   plottable
 
   There are two constructors which leave the pen undefined: \ref
-  QCPScatterStyle() and \ref QCPScatterStyle(ScatterShape shape, double size).
+  QCPScatterStyle() and \ref QCPScatterStyle(ScatterShape shape, double Size).
   If those constructors are used, a call to \ref isPenDefined will return false.
   It leads to scatter points that inherit the pen from the plottable that uses
   the scatter style. Thus, if such a scatter style is passed to QCPGraph, the
@@ -10903,8 +10903,8 @@ void QCPAxisPainterPrivate::getMaxTickLabelSize(const QFont &font,
   Notice that it wasn't even necessary to explicitly call a QCPScatterStyle
   constructor. This works because QCPScatterStyle provides a constructor that
   can transform a \ref ScatterShape directly into a QCPScatterStyle instance
-  (that's the \ref QCPScatterStyle(ScatterShape shape, double size) constructor
-  with a default for \a size). In those cases, C++ allows directly supplying a
+  (that's the \ref QCPScatterStyle(ScatterShape shape, double Size) constructor
+  with a default for \a Size). In those cases, C++ allows directly supplying a
   \ref ScatterShape, where actually a QCPScatterStyle is expected.
 
   \section QCPScatterStyle-custompath-and-pixmap Custom shapes and pixmaps
@@ -10937,7 +10937,7 @@ void QCPAxisPainterPrivate::getMaxTickLabelSize(const QFont &font,
 
   The pen is undefined if a constructor is called that does not carry \a pen as
   parameter. Those are \ref QCPScatterStyle() and \ref
-  QCPScatterStyle(ScatterShape shape, double size). If the pen is undefined, the
+  QCPScatterStyle(ScatterShape shape, double Size). If the pen is undefined, the
   pen of the respective plottable will be used for drawing scatters.
 
   If a pen was defined for this scatter style instance, and you now wish to
@@ -10949,7 +10949,7 @@ void QCPAxisPainterPrivate::getMaxTickLabelSize(const QFont &font,
 /* end documentation of inline functions */
 
 /*!
-  Creates a new QCPScatterStyle instance with size set to 6. No shape, pen or
+  Creates a new QCPScatterStyle instance with Size set to 6. No shape, pen or
   brush is defined.
 
   Since the pen is undefined (\ref isPenDefined returns false), the scatter
@@ -10963,8 +10963,8 @@ QCPScatterStyle::QCPScatterStyle()
       mPenDefined(false) {}
 
 /*!
-  Creates a new QCPScatterStyle instance with shape set to \a shape and size to
-  \a size. No pen or brush is defined.
+  Creates a new QCPScatterStyle instance with shape set to \a shape and Size to
+  \a Size. No pen or brush is defined.
 
   Since the pen is undefined (\ref isPenDefined returns false), the scatter
   color will be inherited from the plottable that uses this scatter style.
@@ -10978,7 +10978,7 @@ QCPScatterStyle::QCPScatterStyle(ScatterShape shape, double size)
 
 /*!
   Creates a new QCPScatterStyle instance with shape set to \a shape, the pen
-  color set to \a color, and size to \a size. No brush is defined, i.e. the
+  color set to \a color, and Size to \a Size. No brush is defined, i.e. the
   scatter point will not be filled.
 */
 QCPScatterStyle::QCPScatterStyle(ScatterShape shape, const QColor &color,
@@ -10992,7 +10992,7 @@ QCPScatterStyle::QCPScatterStyle(ScatterShape shape, const QColor &color,
 /*!
   Creates a new QCPScatterStyle instance with shape set to \a shape, the pen
   color set to \a color, the brush color to \a fill (with a solid pattern), and
-  size to \a size.
+  Size to \a Size.
 */
 QCPScatterStyle::QCPScatterStyle(ScatterShape shape, const QColor &color,
                                  const QColor &fill, double size)
@@ -11004,7 +11004,7 @@ QCPScatterStyle::QCPScatterStyle(ScatterShape shape, const QColor &color,
 
 /*!
   Creates a new QCPScatterStyle instance with shape set to \a shape, the pen set
-  to \a pen, the brush to \a brush, and size to \a size.
+  to \a pen, the brush to \a brush, and Size to \a Size.
 
   \warning In some cases it might be tempting to directly use a pen style like
   <tt>Qt::NoPen</tt> as \a pen and a color like <tt>Qt::blue</tt> as \a brush.
@@ -11013,7 +11013,7 @@ QCPScatterStyle::QCPScatterStyle(ScatterShape shape, const QColor &color,
   doesn't necessarily lead C++ to use this constructor in some cases, but might
   mistake <tt>Qt::NoPen</tt> for a QColor and use the \ref
   QCPScatterStyle(ScatterShape shape, const QColor &color, const QColor &fill,
-  double size) constructor instead (which will lead to an unexpected look of the
+  double Size) constructor instead (which will lead to an unexpected look of the
   scatter points). To prevent this, be more explicit with the parameter types.
   For example, use <tt>QBrush(Qt::blue)</tt> instead of just <tt>Qt::blue</tt>,
   to clearly point out to the compiler that this constructor is wanted.
@@ -11043,10 +11043,10 @@ QCPScatterStyle::QCPScatterStyle(const QPixmap &pixmap)
   \a customPath. The scatter shape is set to \ref ssCustom.
 
   The custom shape line will be drawn with \a pen and filled with \a brush. The
-  size has a slightly different meaning than for built-in scatter points: The
-  custom path will be drawn scaled by a factor of \a size/6.0. Since the default
-  \a size is 6, the custom path will appear in its original size by default. To
-  for example double the size of the path, set \a size to 12.
+  Size has a slightly different meaning than for built-in scatter points: The
+  custom path will be drawn scaled by a factor of \a Size/6.0. Since the default
+  \a Size is 6, the custom path will appear in its original size by default. To
+  for example double the Size of the path, set \a Size to 12.
 */
 QCPScatterStyle::QCPScatterStyle(const QPainterPath &customPath,
                                  const QPen &pen, const QBrush &brush,
@@ -11080,7 +11080,7 @@ void QCPScatterStyle::setFromOther(const QCPScatterStyle &other,
 }
 
 /*!
-  Sets the size (pixel diameter) of the drawn scatter points to \a size.
+  Sets the Size (pixel diameter) of the drawn scatter points to \a Size.
 
   \see setShape
 */
@@ -11309,7 +11309,7 @@ void QCPScatterStyle::drawShape(QCPPainter *painter, double x, double y) const {
 /* end of 'src/scatterstyle.cpp' */
 
 /* including file 'src/plottable.cpp'       */
-/* modified 2022-11-06T12:45:56, size 38818 */
+/* modified 2022-11-06T12:45:56, Size 38818 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPSelectionDecorator
@@ -11325,7 +11325,7 @@ void QCPScatterStyle::drawShape(QCPPainter *painter, double x, double y) const {
   The selection decorator controls both pen (\ref setPen) and brush (\ref
   setBrush), as well as the scatter style (\ref setScatterStyle) if the
   plottable draws scatters. Since a \ref QCPScatterStyle is itself composed of
-  different properties such as color shape and size, the decorator allows
+  different properties such as color shape and Size, the decorator allows
   specifying exactly which of those properties shall be used for the selected
   data point, via \ref setUsedScatterProperties.
 
@@ -11644,7 +11644,7 @@ bool QCPSelectionDecorator::registerWithPlottable(
   returned range (e.g. no points in data).
 
   Note that \a foundRange is not the same as \ref QCPRange::validRange, since
-  the range returned by this function may have size zero (e.g. when there is
+  the range returned by this function may have Size zero (e.g. when there is
   only one data point). In this case \a foundRange would return true, but the
   returned range is not a valid range in terms of \ref QCPRange::validRange.
 
@@ -11669,7 +11669,7 @@ bool QCPSelectionDecorator::registerWithPlottable(
   on the keys.
 
   Note that \a foundRange is not the same as \ref QCPRange::validRange, since
-  the range returned by this function may have size zero (e.g. when there is
+  the range returned by this function may have Size zero (e.g. when there is
   only one data point). In this case \a foundRange would return true, but the
   returned range is not a valid range in terms of \ref QCPRange::validRange.
 
@@ -12307,7 +12307,7 @@ void QCPAbstractPlottable::deselectEvent(bool *selectionStateChanged) {
 /* end of 'src/plottable.cpp' */
 
 /* including file 'src/item.cpp'            */
-/* modified 2022-11-06T12:45:56, size 49486 */
+/* modified 2022-11-06T12:45:56, Size 49486 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPItemAnchor
@@ -13587,7 +13587,7 @@ QCP::Interaction QCPAbstractItem::selectionCategory() const {
 /* end of 'src/item.cpp' */
 
 /* including file 'src/core.cpp'             */
-/* modified 2022-11-06T12:45:56, size 127625 */
+/* modified 2022-11-06T12:45:56, Size 127625 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCustomPlot
@@ -13812,7 +13812,7 @@ QCP::Interaction QCPAbstractItem::selectionCategory() const {
   toPixmap or \ref savePdf.
 
   The layout step queries all layouts and layout elements in the plot for their
-  proposed size and arranges the objects accordingly as preparation for the
+  proposed Size and arranges the objects accordingly as preparation for the
   subsequent drawing step. Through this signal, you have the opportunity to
   update certain things in your plot that depend crucially on the exact
   dimensions/positioning of layout elements such as axes and axis rects.
@@ -14506,7 +14506,7 @@ void QCustomPlot::setOpenGl(bool enabled, int multisampling) {
   The viewport is the area in which the plot is drawn. All mechanisms, e.g.
   margin calculation take the viewport to be the outer border of the plot. The
   viewport normally is the rect() of the QCustomPlot widget, i.e. a rect with
-  top left (0, 0) and size of the QCustomPlot widget.
+  top left (0, 0) and Size of the QCustomPlot widget.
 
   Don't confuse the viewport with the axis rect (QCustomPlot::axisRect). An axis
   rect is typically an area enclosed by four axes, where the graphs/plottables
@@ -14514,8 +14514,8 @@ void QCustomPlot::setOpenGl(bool enabled, int multisampling) {
   their tick numbers, their labels, or even additional axis rects, color scales
   and other layout elements.
 
-  This function is used to allow arbitrary size exports with \ref toPixmap, \ref
-  savePng, \ref savePdf, etc. by temporarily changing the viewport size.
+  This function is used to allow arbitrary Size exports with \ref toPixmap, \ref
+  savePng, \ref savePdf, etc. by temporarily changing the viewport Size.
 */
 void QCustomPlot::setViewport(const QRect &rect) {
   mViewport = rect;
@@ -14555,7 +14555,7 @@ void QCustomPlot::setBufferDevicePixelRatio(double ratio) {
   Sets \a pm as the viewport background pixmap (see \ref setViewport). The
   pixmap is always drawn below all other objects in the plot.
 
-  For cases where the provided pixmap doesn't have the same size as the
+  For cases where the provided pixmap doesn't have the same Size as the
   viewport, scaling can be enabled with \ref setBackgroundScaled and the scaling
   mode (whether and how the aspect ratio is preserved) can be set with \ref
   setBackgroundScaledMode. To set all these options in one call, consider using
@@ -15665,7 +15665,7 @@ bool QCustomPlot::savePdf(const QString &fileName, int width, int height,
   parameter.
 
   For example, if you set both \a width and \a height to 100 and \a scale to 2,
-  you will end up with an image file of size 200*200 in which all graphical
+  you will end up with an image file of Size 200*200 in which all graphical
   elements are scaled up by factor 2 (line widths, texts, etc.). This scaling is
   not done by stretching a 100*100 image, the result will have full 200*200
   pixel resolution.
@@ -15679,9 +15679,9 @@ bool QCustomPlot::savePdf(const QString &fileName, int width, int height,
   be between 0 and 100 or -1 to use the default setting.
 
   The \a resolution will be written to the image file header and has no direct
-  consequence for the quality or the pixel size. However, if opening the image
+  consequence for the quality or the pixel Size. However, if opening the image
   with a tool which respects the metadata, it will be able to scale the image to
-  match either a given size in real units of length (inch, centimeters, etc.),
+  match either a given Size in real units of length (inch, centimeters, etc.),
   or the target display DPI. You can specify in which units \a resolution is
   given, by setting \a resolutionUnit. The \a resolution is converted to the
   format's expected resolution unit internally.
@@ -15724,7 +15724,7 @@ bool QCustomPlot::savePng(const QString &fileName, int width, int height,
   parameter.
 
   For example, if you set both \a width and \a height to 100 and \a scale to 2,
-  you will end up with an image file of size 200*200 in which all graphical
+  you will end up with an image file of Size 200*200 in which all graphical
   elements are scaled up by factor 2 (line widths, texts, etc.). This scaling is
   not done by stretching a 100*100 image, the result will have full 200*200
   pixel resolution.
@@ -15738,9 +15738,9 @@ bool QCustomPlot::savePng(const QString &fileName, int width, int height,
   be between 0 and 100 or -1 to use the default setting.
 
   The \a resolution will be written to the image file header and has no direct
-  consequence for the quality or the pixel size. However, if opening the image
+  consequence for the quality or the pixel Size. However, if opening the image
   with a tool which respects the metadata, it will be able to scale the image to
-  match either a given size in real units of length (inch, centimeters, etc.),
+  match either a given Size in real units of length (inch, centimeters, etc.),
   or the target display DPI. You can specify in which units \a resolution is
   given, by setting \a resolutionUnit. The \a resolution is converted to the
   format's expected resolution unit internally.
@@ -15779,7 +15779,7 @@ bool QCustomPlot::saveJpg(const QString &fileName, int width, int height,
   parameter.
 
   For example, if you set both \a width and \a height to 100 and \a scale to 2,
-  you will end up with an image file of size 200*200 in which all graphical
+  you will end up with an image file of Size 200*200 in which all graphical
   elements are scaled up by factor 2 (line widths, texts, etc.). This scaling is
   not done by stretching a 100*100 image, the result will have full 200*200
   pixel resolution.
@@ -15790,9 +15790,9 @@ bool QCustomPlot::saveJpg(const QString &fileName, int width, int height,
   accuracy.
 
   The \a resolution will be written to the image file header and has no direct
-  consequence for the quality or the pixel size. However, if opening the image
+  consequence for the quality or the pixel Size. However, if opening the image
   with a tool which respects the metadata, it will be able to scale the image to
-  match either a given size in real units of length (inch, centimeters, etc.),
+  match either a given Size in real units of length (inch, centimeters, etc.),
   or the target display DPI. You can specify in which units \a resolution is
   given, by setting \a resolutionUnit. The \a resolution is converted to the
   format's expected resolution unit internally.
@@ -15824,10 +15824,10 @@ bool QCustomPlot::saveBmp(const QString &fileName, int width, int height,
 
 /*! \internal
 
-  Returns a minimum size hint that corresponds to the minimum size of the top
+  Returns a minimum size hint that corresponds to the minimum Size of the top
   level layout
-  (\ref plotLayout). To prevent QCustomPlot from being collapsed to size/width
-  zero, set a minimum size (setMinimumSize) either on the whole QCustomPlot or
+  (\ref plotLayout). To prevent QCustomPlot from being collapsed to Size/width
+  zero, set a minimum Size (setMinimumSize) either on the whole QCustomPlot or
   on any layout elements inside the plot. This is especially important, when
   placed in a QLayout where other components try to take in as much space as
   possible (e.g. QMdiArea).
@@ -15838,7 +15838,7 @@ QSize QCustomPlot::minimumSizeHint() const {
 
 /*! \internal
 
-  Returns a size hint that is the same as \ref minimumSizeHint.
+  Returns a Size hint that is the same as \ref minimumSizeHint.
 
 */
 QSize QCustomPlot::sizeHint() const {
@@ -16235,7 +16235,7 @@ void QCustomPlot::drawBackground(QCPPainter *painter) {
 
   Goes through the layers and makes sure this QCustomPlot instance holds the
   correct number of paint buffers and that they have the correct configuration
-  (size, pixel ratio, etc.). Allocations, reallocations and deletions of paint
+  (Size, pixel ratio, etc.). Allocations, reallocations and deletions of paint
   buffers are performed as necessary. It also associates the paint buffers with
   the layers, so they draw themselves into the right buffer when \ref
   QCPLayer::drawToPaintBuffer is called. This means it associates adjacent \ref
@@ -16284,10 +16284,10 @@ void QCustomPlot::setupPaintBuffers() {
   }
   // remove unneeded buffers:
   while (mPaintBuffers.size() - 1 > bufferIndex) mPaintBuffers.removeLast();
-  // resize buffers to viewport size and clear contents:
+  // resize buffers to viewport Size and clear contents:
   foreach (QSharedPointer<QCPAbstractPaintBuffer> buffer, mPaintBuffers) {
     buffer->setSize(
-        viewport().size());  // won't do anything if already correct size
+        viewport().size());  // won't do anything if already correct Size
     buffer->clear(Qt::transparent);
     buffer->setInvalidated();
   }
@@ -16300,7 +16300,7 @@ void QCustomPlot::setupPaintBuffers() {
 
   Depending on the current setting of \ref setOpenGl, and the current Qt
   version, different backends (subclasses of \ref QCPAbstractPaintBuffer) are
-  created, initialized with the proper size and device pixel ratio, and
+  created, initialized with the proper Size and device pixel ratio, and
   returned.
 */
 QCPAbstractPaintBuffer *QCustomPlot::createPaintBuffer() {
@@ -16470,7 +16470,7 @@ void QCustomPlot::processRectSelection(QRect rect, QMouseEvent *event) {
   typedef QPair<QCPAbstractPlottable *, QCPDataSelection> SelectionCandidate;
   typedef QMultiMap<int, SelectionCandidate>
       SelectionCandidates;  // map key is number of selected data points, so we
-                            // have selections sorted by size
+                            // have selections sorted by Size
 
   bool selectionStateChanged = false;
 
@@ -16807,8 +16807,8 @@ QList<QCPLayerable *> QCustomPlot::layerableListAt(
 
   The \a resolution will be written to the image file header (if the file format
   supports this) and has no direct consequence for the quality or the pixel
-  size. However, if opening the image with a tool which respects the metadata,
-  it will be able to scale the image to match either a given size in real units
+  Size. However, if opening the image with a tool which respects the metadata,
+  it will be able to scale the image to match either a given Size in real units
   of length (inch, centimeters, etc.), or the target display DPI. You can
   specify in which units \a resolution is given, by setting \a resolutionUnit.
   The \a resolution is converted to the format's expected resolution unit
@@ -16947,7 +16947,7 @@ void QCustomPlot::toPainter(QCPPainter *painter, int width, int height) {
 /* end of 'src/core.cpp' */
 
 /* including file 'src/colorgradient.cpp'   */
-/* modified 2022-11-06T12:45:56, size 25408 */
+/* modified 2022-11-06T12:45:56, Size 25408 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPColorGradient
@@ -17206,7 +17206,7 @@ void QCPColorGradient::colorize(const double *data, const QCPRange &range,
 /*! \overload
 
   Additionally to the other overload of \ref colorize, this method takes the
-  array \a alpha, which has the same size and structure as \a data and encodes
+  array \a alpha, which has the same Size and structure as \a data and encodes
   the alpha information per data point.
 
   The QRgb values that are placed in \a scanLine have their r, g and b
@@ -17612,7 +17612,7 @@ void QCPColorGradient::updateColorBuffer() {
 /* end of 'src/colorgradient.cpp' */
 
 /* including file 'src/selectiondecorator-bracket.cpp' */
-/* modified 2022-11-06T12:45:56, size 12308            */
+/* modified 2022-11-06T12:45:56, Size 12308            */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPSelectionDecoratorBracket
@@ -17904,7 +17904,7 @@ QPointF QCPSelectionDecoratorBracket::getPixelCoordinates(
 /* end of 'src/selectiondecorator-bracket.cpp' */
 
 /* including file 'src/layoutelements/layoutelement-axisrect.cpp' */
-/* modified 2022-11-06T12:45:56, size 47193                       */
+/* modified 2022-11-06T12:45:56, Size 47193                       */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPAxisRect
@@ -18002,9 +18002,9 @@ QPointF QCPSelectionDecoratorBracket::getPixelCoordinates(
   here, so the returned value is with respect to the inner \ref rect.
 */
 
-/*! \fn QSize QCPAxisRect::size() const
+/*! \fn QSize QCPAxisRect::Size() const
 
-  Returns the pixel size of this axis rect. Margins are not taken into account
+  Returns the pixel Size of this axis rect. Margins are not taken into account
   here, so the returned value is with respect to the inner \ref rect.
 */
 
@@ -18533,7 +18533,7 @@ void QCPAxisRect::draw(QCPPainter *painter) { drawBackground(painter); }
   "background" layer by default, the axis rect backgrounds are usually drawn
   below everything else.
 
-  For cases where the provided pixmap doesn't have the same size as the axis
+  For cases where the provided pixmap doesn't have the same Size as the axis
   rect, scaling can be enabled with \ref setBackgroundScaled and the scaling
   mode (i.e. whether and how the aspect ratio is preserved) can be set with \ref
   setBackgroundScaledMode. To set all these options in one call, consider using
@@ -19181,7 +19181,7 @@ void QCPAxisRect::wheelEvent(QWheelEvent *event) {
 /* end of 'src/layoutelements/layoutelement-axisrect.cpp' */
 
 /* including file 'src/layoutelements/layoutelement-legend.cpp' */
-/* modified 2022-11-06T12:45:56, size 31762                     */
+/* modified 2022-11-06T12:45:56, Size 31762                     */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPAbstractLegendItem
@@ -19430,7 +19430,7 @@ QFont QCPPlottableLegendItem::getFont() const {
 
 /*! \internal
 
-  Draws the item with \a painter. The size and position of the drawn legend item
+  Draws the item with \a painter. The Size and position of the drawn legend item
   is defined by the parent layout (typically a \ref QCPLegend) and the \ref
   minimumOuterSizeHint and \ref maximumOuterSizeHint of this legend item.
 */
@@ -19470,7 +19470,7 @@ void QCPPlottableLegendItem::draw(QCPPainter *painter) {
 
 /*! \internal
 
-  Calculates and returns the size of this item. This includes the icon, the text
+  Calculates and returns the Size of this item. This includes the icon, the text
   and the padding in between.
 
   \seebaseclassmethod
@@ -19647,8 +19647,8 @@ void QCPLegend::setTextColor(const QColor &color) {
 }
 
 /*!
-  Sets the size of legend icons. Legend items that draw an icon (e.g. a visual
-  representation of the graph) will use this size by default.
+  Sets the Size of legend icons. Legend items that draw an icon (e.g. a visual
+  representation of the graph) will use this Size by default.
 */
 void QCPLegend::setIconSize(const QSize &size) { mIconSize = size; }
 
@@ -20074,7 +20074,7 @@ void QCPLegend::parentPlotInitialized(QCustomPlot *parentPlot) {
 /* end of 'src/layoutelements/layoutelement-legend.cpp' */
 
 /* including file 'src/layoutelements/layoutelement-textelement.cpp' */
-/* modified 2022-11-06T12:45:56, size 12925                          */
+/* modified 2022-11-06T12:45:56, Size 12925                          */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPTextElement
@@ -20466,7 +20466,7 @@ QColor QCPTextElement::mainTextColor() const {
 /* end of 'src/layoutelements/layoutelement-textelement.cpp' */
 
 /* including file 'src/layoutelements/layoutelement-colorscale.cpp' */
-/* modified 2022-11-06T12:45:56, size 26531                         */
+/* modified 2022-11-06T12:45:56, Size 26531                         */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPColorScale
@@ -21152,7 +21152,7 @@ void QCPColorScaleAxisRectPrivate::axisSelectableChanged(
 /* end of 'src/layoutelements/layoutelement-colorscale.cpp' */
 
 /* including file 'src/plottables/plottable-graph.cpp' */
-/* modified 2022-11-06T12:45:57, size 74926            */
+/* modified 2022-11-06T12:45:57, Size 74926            */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPGraphData
@@ -21355,7 +21355,7 @@ void QCPGraph::setData(QSharedPointer<QCPGraphDataContainer> data) {
 
   Replaces the current data with the provided points in \a keys and \a values.
   The provided vectors should have equal length. Else, the number of added
-  points will be the size of the smallest vector.
+  points will be the Size of the smallest vector.
 
   If you can guarantee that the passed data points are sorted by \a keys in
   ascending order, you can set \a alreadySorted to true, to improve performance
@@ -21474,7 +21474,7 @@ void QCPGraph::setAdaptiveSampling(bool enabled) {
 
   Adds the provided points in \a keys and \a values to the current data. The
   provided vectors should have equal length. Else, the number of added points
-  will be the size of the smallest vector.
+  will be the Size of the smallest vector.
 
   If you can guarantee that the passed data points are sorted by \a keys in
   ascending order, you can set \a alreadySorted to true, to improve performance
@@ -23167,7 +23167,7 @@ int QCPGraph::findIndexBelowY(const QVector<QPointF> *data, double y) const {
 /* end of 'src/plottables/plottable-graph.cpp' */
 
 /* including file 'src/plottables/plottable-curve.cpp' */
-/* modified 2022-11-06T12:45:56, size 63851            */
+/* modified 2022-11-06T12:45:56, Size 63851            */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPCurveData
@@ -23365,7 +23365,7 @@ void QCPCurve::setData(QSharedPointer<QCPCurveDataContainer> data) {
 
   Replaces the current data with the provided points in \a t, \a keys and \a
   values. The provided vectors should have equal length. Else, the number of
-  added points will be the size of the smallest vector.
+  added points will be the Size of the smallest vector.
 
   If you can guarantee that the passed data points are sorted by \a t in
   ascending order, you can set \a alreadySorted to true, to improve performance
@@ -23383,7 +23383,7 @@ void QCPCurve::setData(const QVector<double> &t, const QVector<double> &keys,
 
   Replaces the current data with the provided points in \a keys and \a values.
   The provided vectors should have equal length. Else, the number of added
-  points will be the size of the smallest vector.
+  points will be the Size of the smallest vector.
 
   The t parameter of each data point will be set to the integer index of the
   respective key/value pair.
@@ -23435,7 +23435,7 @@ void QCPCurve::setLineStyle(QCPCurve::LineStyle style) { mLineStyle = style; }
 
   Adds the provided points in \a t, \a keys and \a values to the current data.
   The provided vectors should have equal length. Else, the number of added
-  points will be the size of the smallest vector.
+  points will be the Size of the smallest vector.
 
   If you can guarantee that the passed data points are sorted by \a keys in
   ascending order, you can set \a alreadySorted to true, to improve performance
@@ -23471,7 +23471,7 @@ void QCPCurve::addData(const QVector<double> &t, const QVector<double> &keys,
 
   Adds the provided points in \a keys and \a values to the current data. The
   provided vectors should have equal length. Else, the number of added points
-  will be the size of the smallest vector.
+  will be the Size of the smallest vector.
 
   The t parameter of each data point will be set to the integer index of the
   respective key/value pair.
@@ -25083,7 +25083,7 @@ double QCPCurve::pointDistance(
 /* end of 'src/plottables/plottable-curve.cpp' */
 
 /* including file 'src/plottables/plottable-bars.cpp' */
-/* modified 2022-11-06T12:45:56, size 43907           */
+/* modified 2022-11-06T12:45:56, Size 43907           */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPBarsGroup
@@ -25134,7 +25134,7 @@ double QCPCurve::pointDistance(
   \see bars(int index)
 */
 
-/*! \fn int QCPBarsGroup::size() const
+/*! \fn int QCPBarsGroup::Size() const
 
   Returns the number of QCPBars plottables that are part of this group.
 
@@ -25144,7 +25144,7 @@ double QCPCurve::pointDistance(
 
   Returns whether this bars group is empty.
 
-  \see size
+  \see Size
 */
 
 /*! \fn bool QCPBarsGroup::contains(QCPBars *bars)
@@ -25191,7 +25191,7 @@ void QCPBarsGroup::setSpacing(double spacing) { mSpacing = spacing; }
   Returns the QCPBars instance with the specified \a index in this group. If no
   such QCPBars exists, returns \c nullptr.
 
-  \see bars(), size
+  \see bars(), Size
 */
 QCPBars *QCPBarsGroup::bars(int index) const {
   if (index >= 0 && index < mBars.size()) {
@@ -25602,7 +25602,7 @@ void QCPBars::setData(QSharedPointer<QCPBarsDataContainer> data) {
 
   Replaces the current data with the provided points in \a keys and \a values.
   The provided vectors should have equal length. Else, the number of added
-  points will be the size of the smallest vector.
+  points will be the Size of the smallest vector.
 
   If you can guarantee that the passed data points are sorted by \a keys in
   ascending order, you can set \a alreadySorted to true, to improve performance
@@ -25676,7 +25676,7 @@ void QCPBars::setStackingGap(double pixels) { mStackingGap = pixels; }
 
   Adds the provided points in \a keys and \a values to the current data. The
   provided vectors should have equal length. Else, the number of added points
-  will be the size of the smallest vector.
+  will be the Size of the smallest vector.
 
   If you can guarantee that the passed data points are sorted by \a keys in
   ascending order, you can set \a alreadySorted to true, to improve performance
@@ -26266,7 +26266,7 @@ void QCPBars::connectBars(QCPBars *lower, QCPBars *upper) {
 /* end of 'src/plottables/plottable-bars.cpp' */
 
 /* including file 'src/plottables/plottable-statisticalbox.cpp' */
-/* modified 2022-11-06T12:45:57, size 28951                     */
+/* modified 2022-11-06T12:45:57, Size 28951                     */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPStatisticalBoxData
@@ -26515,7 +26515,7 @@ void QCPStatisticalBox::setData(
   Replaces the current data with the provided points in \a keys, \a minimum, \a
   lowerQuartile, \a median, \a upperQuartile and \a maximum. The provided
   vectors should have equal length. Else, the number of added points will be the
-  size of the smallest vector.
+  Size of the smallest vector.
 
   If you can guarantee that the passed data points are sorted by \a keys in
   ascending order, you can set \a alreadySorted to true, to improve performance
@@ -26612,7 +26612,7 @@ void QCPStatisticalBox::setOutlierStyle(const QCPScatterStyle &style) {
 
   Adds the provided points in \a keys, \a minimum, \a lowerQuartile, \a median,
   \a upperQuartile and \a maximum to the current data. The provided vectors
-  should have equal length. Else, the number of added points will be the size of
+  should have equal length. Else, the number of added points will be the Size of
   the smallest vector.
 
   If you can guarantee that the passed data points are sorted by \a keys in
@@ -26986,7 +26986,7 @@ QVector<QLineF> QCPStatisticalBox::getWhiskerBarLines(
 /* end of 'src/plottables/plottable-statisticalbox.cpp' */
 
 /* including file 'src/plottables/plottable-colormap.cpp' */
-/* modified 2022-11-06T12:45:56, size 48189               */
+/* modified 2022-11-06T12:45:56, Size 48189               */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPColorMapData
@@ -26999,7 +26999,7 @@ QVector<QLineF> QCPStatisticalBox::getWhiskerBarLines(
   array, which \ref QCPColorMap then displays as a 2D image in the plot, where
   the array values are represented by a color, depending on the value.
 
-  The size of the array can be controlled via \ref setSize (or \ref setKeySize,
+  The Size of the array can be controlled via \ref setSize (or \ref setKeySize,
   \ref setValueSize). Which plot coordinates these cells correspond to can be
   configured with \ref setRange (or \ref setKeyRange, \ref setValueRange).
 
@@ -27010,7 +27010,7 @@ QVector<QLineF> QCPStatisticalBox::getWhiskerBarLines(
   functions \ref coordToCell and \ref cellToCoord.
 
   A \ref QCPColorMapData also holds an on-demand two-dimensional array of alpha
-  values which (if allocated) has the same size as the data map. It can be
+  values which (if allocated) has the same Size as the data map. It can be
   accessed via \ref setAlpha, \ref fillAlpha and \ref clearAlpha. The memory for
   the alpha map is only allocated if needed, i.e. on the first call of \ref
   setAlpha. \ref clearAlpha restores full opacity and frees the alpha map.
@@ -27034,7 +27034,7 @@ QVector<QLineF> QCPStatisticalBox::getWhiskerBarLines(
 /*! \fn bool QCPColorMapData::isEmpty() const
 
   Returns whether this instance carries no data. This is equivalent to having a
-  size where at least one of the dimensions is 0 (see \ref setSize).
+  Size where at least one of the dimensions is 0 (see \ref setSize).
 */
 
 /* end of documentation of inline functions */
@@ -27154,7 +27154,7 @@ unsigned char QCPColorMapData::alpha(int keyIndex, int valueIndex) {
   valueSize cells in the value dimension.
 
   The current data is discarded and the map cells are set to 0, unless the map
-  had already the requested size.
+  had already the requested Size.
 
   Setting at least one of \a keySize or \a valueSize to zero frees the internal
   data array and \ref isEmpty returns true.
@@ -27186,7 +27186,7 @@ void QCPColorMapData::setSize(int keySize, int valueSize) {
     } else
       mData = nullptr;
 
-    if (mAlpha)  // if we had an alpha map, recreate it with new size
+    if (mAlpha)  // if we had an alpha map, recreate it with new Size
       createAlpha();
 
     mDataModified = true;
@@ -27197,7 +27197,7 @@ void QCPColorMapData::setSize(int keySize, int valueSize) {
   Resizes the data array to have \a keySize cells in the key dimension.
 
   The current data is discarded and the map cells are set to 0, unless the map
-  had already the requested size.
+  had already the requested Size.
 
   Setting \a keySize to zero frees the internal data array and \ref isEmpty
   returns true.
@@ -27210,7 +27210,7 @@ void QCPColorMapData::setKeySize(int keySize) { setSize(keySize, mValueSize); }
   Resizes the data array to have \a valueSize cells in the value dimension.
 
   The current data is discarded and the map cells are set to 0, unless the map
-  had already the requested size.
+  had already the requested Size.
 
   Setting \a valueSize to zero frees the internal data array and \ref isEmpty
   returns true.
@@ -27226,7 +27226,7 @@ void QCPColorMapData::setValueSize(int valueSize) {
   the rectangular area covered by the color map in plot coordinates.
 
   The outer cells will be centered on the range boundaries given to this
-  function. For example, if the key size (\ref setKeySize) is 3 and \a keyRange
+  function. For example, if the key Size (\ref setKeySize) is 3 and \a keyRange
   is set to <tt>QCPRange(2, 3)</tt> there will be cells centered on the key
   coordinates 2, 2.5 and 3.
 
@@ -27244,7 +27244,7 @@ void QCPColorMapData::setRange(const QCPRange &keyRange,
   covered by the color map in plot coordinates.
 
   The outer cells will be centered on the range boundaries given to this
-  function. For example, if the key size (\ref setKeySize) is 3 and \a keyRange
+  function. For example, if the key Size (\ref setKeySize) is 3 and \a keyRange
   is set to <tt>QCPRange(2, 3)</tt> there will be cells centered on the key
   coordinates 2, 2.5 and 3.
 
@@ -27260,7 +27260,7 @@ void QCPColorMapData::setKeyRange(const QCPRange &keyRange) {
   covered by the color map in plot coordinates.
 
   The outer cells will be centered on the range boundaries given to this
-  function. For example, if the value size (\ref setValueSize) is 3 and \a
+  function. For example, if the value Size (\ref setValueSize) is 3 and \a
   valueRange is set to <tt>QCPRange(2, 3)</tt> there will be cells centered on
   the value coordinates 2, 2.5 and 3.
 
@@ -27302,7 +27302,7 @@ void QCPColorMapData::setData(double key, double value, double z) {
 
 /*!
   Sets the data of the cell with indices \a keyIndex and \a valueIndex to \a z.
-  The indices enumerate the cells starting from zero, up to the map's size-1 in
+  The indices enumerate the cells starting from zero, up to the map's Size-1 in
   the respective dimension (see \ref setSize).
 
   In the standard plot configuration (horizontal key axis and vertical value
@@ -27488,13 +27488,13 @@ void QCPColorMapData::cellToCoord(int keyIndex, int valueIndex, double *key,
 
 /*! \internal
 
-  Allocates the internal alpha map with the current data map key/value size and,
+  Allocates the internal alpha map with the current data map key/value Size and,
   if \a initializeOpaque is true, initializes all values to 255. If \a
   initializeOpaque is false, the values are not initialized at all. In this
   case, the alpha map should be initialized manually, e.g. with \ref fillAlpha.
 
   If an alpha map exists already, it is deleted first. If this color map is
-  empty (has either key or value size zero, see \ref isEmpty), the alpha map is
+  empty (has either key or value Size zero, see \ref isEmpty), the alpha map is
   cleared.
 
   The return value indicates the existence of the alpha map after the call. So
@@ -27875,8 +27875,8 @@ void QCPColorMap::rescaleDataRange(bool recalculateDataBounds) {
   higher quality algorithm (Qt::SmoothTransformation).
 
   The current color map appearance is scaled down to \a thumbSize. Ideally, this
-  should be equal to the size of the legend icon (see \ref
-  QCPLegend::setIconSize). If it isn't exactly the configured legend icon size,
+  should be equal to the Size of the legend icon (see \ref
+  QCPLegend::setIconSize). If it isn't exactly the configured legend icon Size,
   the thumb will be rescaled during drawing of the legend item.
 
   \see setDataRange
@@ -28003,16 +28003,16 @@ void QCPColorMap::updateMapImage() {
       mInterpolate
           ? 1
           : int(1.0 +
-                100.0 / double(keySize));  // make mMapImage have at least size
-                                           // 100, factor becomes 1 if size >
+                100.0 / double(keySize));  // make mMapImage have at least Size
+                                           // 100, factor becomes 1 if Size >
                                            // 200 or interpolation is on
   int valueOversamplingFactor =
       mInterpolate
           ? 1
           : int(1.0 +
                 100.0 /
-                    double(valueSize));  // make mMapImage have at least size
-                                         // 100, factor becomes 1 if size > 200
+                    double(valueSize));  // make mMapImage have at least Size
+                                         // 100, factor becomes 1 if Size > 200
                                          // or interpolation is on
 
   // resize mMapImage to correct dimensions including possible oversampling
@@ -28054,9 +28054,9 @@ void QCPColorMap::updateMapImage() {
                                                // the undersampled image
     } else if (!mUndersampledMapImage.isNull())
       mUndersampledMapImage =
-          QImage();  // don't need oversampling mechanism anymore (map size has
+          QImage();  // don't need oversampling mechanism anymore (map Size has
                      // changed) but mUndersampledMapImage still has nonzero
-                     // size, free it
+                     // Size, free it
 
     const double *rawData = mMapData->mData;
     const unsigned char *rawAlpha = mMapData->mAlpha;
@@ -28222,7 +28222,7 @@ void QCPColorMap::drawLegendIcon(QCPPainter *painter,
 /* end of 'src/plottables/plottable-colormap.cpp' */
 
 /* including file 'src/plottables/plottable-financial.cpp' */
-/* modified 2022-11-06T12:45:57, size 42914                */
+/* modified 2022-11-06T12:45:57, Size 42914                */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPFinancialData
@@ -28438,7 +28438,7 @@ void QCPFinancial::setData(QSharedPointer<QCPFinancialDataContainer> data) {
 
   Replaces the current data with the provided points in \a keys, \a open, \a
   high, \a low and \a close. The provided vectors should have equal length.
-  Else, the number of added points will be the size of the smallest vector.
+  Else, the number of added points will be the Size of the smallest vector.
 
   If you can guarantee that the passed data points are sorted by \a keys in
   ascending order, you can set \a alreadySorted to true, to improve performance
@@ -28550,7 +28550,7 @@ void QCPFinancial::setPenNegative(const QPen &pen) { mPenNegative = pen; }
 
   Adds the provided points in \a keys, \a open, \a high, \a low and \a close to
   the current data. The provided vectors should have equal length. Else, the
-  number of added points will be the size of the smallest vector.
+  number of added points will be the Size of the smallest vector.
 
   If you can guarantee that the passed data points are sorted by \a keys in
   ascending order, you can set \a alreadySorted to true, to improve performance
@@ -28708,7 +28708,7 @@ QCPRange QCPFinancial::getValueRange(bool &foundRange,
   time) to OHLC binned data points. The return value can then be passed on to
   \ref QCPFinancialDataContainer::set(const QCPFinancialDataContainer&).
 
-  The size of the bins can be controlled with \a timeBinSize in the same units
+  The Size of the bins can be controlled with \a timeBinSize in the same units
   as \a time is given. For example, if the unit of \a time is seconds and single
   OHLC/Candlesticks should span an hour each, set \a timeBinSize to 3600.
 
@@ -29304,7 +29304,7 @@ QRectF QCPFinancial::selectionHitBox(
 /* end of 'src/plottables/plottable-financial.cpp' */
 
 /* including file 'src/plottables/plottable-errorbar.cpp' */
-/* modified 2022-11-06T12:45:56, size 37679               */
+/* modified 2022-11-06T12:45:56, Size 37679               */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPErrorBarsData
@@ -29378,7 +29378,7 @@ QCPErrorBarsData::QCPErrorBarsData(double errorMinus, double errorPlus)
   The appearance of the error bars is defined by the pen (\ref setPen), and the
   width of the whiskers (\ref setWhiskerWidth). Further, the error bar backbones
   may leave a gap around the data point center to prevent that error bars are
-  drawn too close to or even through scatter points. This gap size can be
+  drawn too close to or even through scatter points. This gap Size can be
   controlled via \ref setSymbolGap.
 */
 
@@ -30280,7 +30280,7 @@ bool QCPErrorBars::rectIntersectsLine(const QRectF &pixelRect,
 /* end of 'src/plottables/plottable-errorbar.cpp' */
 
 /* including file 'src/items/item-straightline.cpp' */
-/* modified 2022-11-06T12:45:56, size 7596          */
+/* modified 2022-11-06T12:45:56, Size 7596          */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPItemStraightLine
@@ -30456,7 +30456,7 @@ QPen QCPItemStraightLine::mainPen() const {
 /* end of 'src/items/item-straightline.cpp' */
 
 /* including file 'src/items/item-line.cpp' */
-/* modified 2022-11-06T12:45:56, size 8525  */
+/* modified 2022-11-06T12:45:56, Size 8525  */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPItemLine
@@ -30667,7 +30667,7 @@ QPen QCPItemLine::mainPen() const { return mSelected ? mSelectedPen : mPen; }
 /* end of 'src/items/item-line.cpp' */
 
 /* including file 'src/items/item-curve.cpp' */
-/* modified 2022-11-06T12:45:56, size 7273   */
+/* modified 2022-11-06T12:45:56, Size 7273   */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPItemCurve
@@ -30823,7 +30823,7 @@ QPen QCPItemCurve::mainPen() const { return mSelected ? mSelectedPen : mPen; }
 /* end of 'src/items/item-curve.cpp' */
 
 /* including file 'src/items/item-rect.cpp' */
-/* modified 2022-11-06T12:45:56, size 6472  */
+/* modified 2022-11-06T12:45:56, Size 6472  */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPItemRect
@@ -30969,7 +30969,7 @@ QBrush QCPItemRect::mainBrush() const {
 /* end of 'src/items/item-rect.cpp' */
 
 /* including file 'src/items/item-text.cpp' */
-/* modified 2022-11-06T12:45:56, size 13335 */
+/* modified 2022-11-06T12:45:56, Size 13335 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPItemText
@@ -31300,7 +31300,7 @@ QBrush QCPItemText::mainBrush() const {
 /* end of 'src/items/item-text.cpp' */
 
 /* including file 'src/items/item-ellipse.cpp' */
-/* modified 2022-11-06T12:45:56, size 7881     */
+/* modified 2022-11-06T12:45:56, Size 7881     */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPItemEllipse
@@ -31482,7 +31482,7 @@ QBrush QCPItemEllipse::mainBrush() const {
 /* end of 'src/items/item-ellipse.cpp' */
 
 /* including file 'src/items/item-pixmap.cpp' */
-/* modified 2022-11-06T12:45:56, size 10622   */
+/* modified 2022-11-06T12:45:56, Size 10622   */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPItemPixmap
@@ -31635,7 +31635,7 @@ QPointF QCPItemPixmap::anchorPixelPosition(int anchorId) const {
   when \a topLeft is further to the bottom/right than \a bottomRight.)
 
   This function only creates the scaled pixmap when the buffered pixmap has a
-  different size than the expected result, so calling this function repeatedly,
+  different Size than the expected result, so calling this function repeatedly,
   e.g. in the \ref draw function, does not cause expensive rescaling every time.
 
   If scaling is disabled, sets mScaledPixmap to a null QPixmap.
@@ -31679,7 +31679,7 @@ void QCPItemPixmap::updateScaledPixmap(QRect finalRect, bool flipHorz,
   This is the case when the item position \a topLeft is further to the
   bottom/right than \a bottomRight.
 
-  If scaling is disabled, returns a rect with size of the original pixmap and
+  If scaling is disabled, returns a rect with Size of the original pixmap and
   the top left corner aligned with the item position \a topLeft. The position \a
   bottomRight is ignored.
 */
@@ -31732,7 +31732,7 @@ QPen QCPItemPixmap::mainPen() const { return mSelected ? mSelectedPen : mPen; }
 /* end of 'src/items/item-pixmap.cpp' */
 
 /* including file 'src/items/item-tracer.cpp' */
-/* modified 2022-11-06T12:45:56, size 14645   */
+/* modified 2022-11-06T12:45:56, Size 14645   */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPItemTracer
@@ -31828,7 +31828,7 @@ void QCPItemTracer::setSelectedBrush(const QBrush &brush) {
 }
 
 /*!
-  Sets the size of the tracer in pixels, if the style supports setting a size
+  Sets the size of the tracer in pixels, if the style supports setting a Size
   (e.g. \ref tsSquare does, \ref tsCrosshair does not).
 */
 void QCPItemTracer::setSize(double size) { mSize = size; }
@@ -32090,7 +32090,7 @@ QBrush QCPItemTracer::mainBrush() const {
 /* end of 'src/items/item-tracer.cpp' */
 
 /* including file 'src/items/item-bracket.cpp' */
-/* modified 2022-11-06T12:45:56, size 10705    */
+/* modified 2022-11-06T12:45:56, Size 10705    */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPItemBracket
@@ -32337,7 +32337,7 @@ QPen QCPItemBracket::mainPen() const { return mSelected ? mSelectedPen : mPen; }
 /* end of 'src/items/item-bracket.cpp' */
 
 /* including file 'src/polar/radialaxis.cpp' */
-/* modified 2022-11-06T12:45:57, size 49415  */
+/* modified 2022-11-06T12:45:57, Size 49415  */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPPolarAxisRadial
@@ -32670,7 +32670,7 @@ void QCPPolarAxisRadial::setRange(double lower, double upper) {
   Sets the range of the axis.
 
   The \a position coordinate indicates together with the \a alignment parameter,
-  where the new range will be positioned. \a size defines the size of the new
+  where the new range will be positioned. \a size defines the Size of the new
   axis range. \a alignment may be Qt::AlignLeft, Qt::AlignRight or
   Qt::AlignCenter. This will cause the left border, right border, or center of
   the range to be aligned with \a position. Any other values of \a alignment
@@ -33212,7 +33212,7 @@ void QCPPolarAxisRadial::moveRange(double diff) {
 /*!
   Scales the range of this axis by \a factor around the center of the current
   axis range. For example, if \a factor is 2.0, then the axis range will double
-  its size, and the point at the axis range center won't have changed its
+  its Size, and the point at the axis range center won't have changed its
   position in the QCustomPlot widget (i.e. coordinates around the center will
   have moved symmetrically closer).
 
@@ -33227,7 +33227,7 @@ void QCPPolarAxisRadial::scaleRange(double factor) {
 
   Scales the range of this axis by \a factor around the coordinate \a center.
   For example, if \a factor is 2.0, \a center is 1.0, then the axis range will
-  double its size, and the point at coordinate 1.0 won't have changed its
+  double its Size, and the point at coordinate 1.0 won't have changed its
   position in the QCustomPlot widget (i.e. coordinates around 1.0 will have
   moved symmetrically closer to 1.0).
 
@@ -33274,7 +33274,7 @@ void QCPPolarAxisRadial::rescale(bool onlyVisiblePlottables) {
   QList<QCPAbstractPlottable*> p = plottables();
   QCPRange newRange;
   bool haveRange = false;
-  for (int i=0; i<p.size(); ++i)
+  for (int i=0; i<p.Size(); ++i)
   {
     if (!p.at(i)->realVisibility() && onlyVisiblePlottables)
       continue;
@@ -33768,7 +33768,7 @@ QCP::Interaction QCPPolarAxisRadial::selectionCategory() const {
 /* end of 'src/polar/radialaxis.cpp' */
 
 /* including file 'src/polar/layoutelement-angularaxis.cpp' */
-/* modified 2022-11-06T12:45:57, size 57266                 */
+/* modified 2022-11-06T12:45:57, Size 57266                 */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPPolarAxisAngular
@@ -33834,9 +33834,9 @@ QCP::Interaction QCPPolarAxisRadial::selectionCategory() const {
   here, so the returned value is with respect to the inner \ref rect.
 */
 
-/*! \fn QSize QCPPolarAxisAngular::size() const
+/*! \fn QSize QCPPolarAxisAngular::Size() const
 
-  Returns the pixel size of this axis rect. Margins are not taken into account
+  Returns the pixel Size of this axis rect. Margins are not taken into account
   here, so the returned value is with respect to the inner \ref rect.
 */
 
@@ -34133,7 +34133,7 @@ void QCPPolarAxisAngular::moveRange(double diff) {
 /*!
   Scales the range of this axis by \a factor around the center of the current
   axis range. For example, if \a factor is 2.0, then the axis range will double
-  its size, and the point at the axis range center won't have changed its
+  its Size, and the point at the axis range center won't have changed its
   position in the QCustomPlot widget (i.e. coordinates around the center will
   have moved symmetrically closer).
 
@@ -34148,7 +34148,7 @@ void QCPPolarAxisAngular::scaleRange(double factor) {
 
   Scales the range of this axis by \a factor around the coordinate \a center.
   For example, if \a factor is 2.0, \a center is 1.0, then the axis range will
-  double its size, and the point at coordinate 1.0 won't have changed its
+  double its Size, and the point at coordinate 1.0 won't have changed its
   position in the QCustomPlot widget (i.e. coordinates around 1.0 will have
   moved symmetrically closer to 1.0).
 
@@ -34418,7 +34418,7 @@ QCP::Interaction QCPPolarAxisAngular::selectionCategory() const {
   "background" layer by default, the axis rect backgrounds are usually drawn
   below everything else.
 
-  For cases where the provided pixmap doesn't have the same size as the axis
+  For cases where the provided pixmap doesn't have the same Size as the axis
   rect, scaling can be enabled with \ref setBackgroundScaled and the scaling
   mode (i.e. whether and how the aspect ratio is preserved) can be set with \ref
   setBackgroundScaledMode. To set all these options in one call, consider using
@@ -34592,7 +34592,7 @@ void QCPPolarAxisAngular::setRange(double lower, double upper) {
   Sets the range of the axis.
 
   The \a position coordinate indicates together with the \a alignment parameter,
-  where the new range will be positioned. \a size defines the size of the new
+  where the new range will be positioned. \a Size defines the size of the new
   axis range. \a alignment may be Qt::AlignLeft, Qt::AlignRight or
   Qt::AlignCenter. This will cause the left border, right border, or center of
   the range to be aligned with \a position. Any other values of \a alignment
@@ -35428,7 +35428,7 @@ bool QCPPolarAxisAngular::registerPolarGraph(QCPPolarGraph *graph) {
 /* end of 'src/polar/layoutelement-angularaxis.cpp' */
 
 /* including file 'src/polar/polargrid.cpp' */
-/* modified 2022-11-06T12:45:57, size 7493  */
+/* modified 2022-11-06T12:45:57, Size 7493  */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPPolarGrid
@@ -35605,7 +35605,7 @@ void QCPPolarGrid::drawAngularGrid(QCPPainter *painter, const QPointF &center,
 /* end of 'src/polar/polargrid.cpp' */
 
 /* including file 'src/polar/polargraph.cpp' */
-/* modified 2022-11-06T12:45:57, size 44035  */
+/* modified 2022-11-06T12:45:57, Size 44035  */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// QCPPolarLegendItem
@@ -35920,7 +35920,7 @@ void QCPPolarGraph::setData(QSharedPointer<QCPGraphDataContainer> data) {
 
   Replaces the current data with the provided points in \a keys and \a values.
   The provided vectors should have equal length. Else, the number of added
-  points will be the size of the smallest vector.
+  points will be the Size of the smallest vector.
 
   If you can guarantee that the passed data points are sorted by \a keys in
   ascending order, you can set \a alreadySorted to true, to improve performance
@@ -36826,12 +36826,12 @@ void QCPPolarGraph::getOptimizedScatterData(
       (reversed
            ? 0
            : clipMargin);  // clip slightly outside of actual range to avoid
-                           // scatter size to peek into visible circle
+                           // scatter Size to peek into visible circle
   const double lowerClipValue =
       range.lower -
       (reversed ? clipMargin
                 : 0);  // clip slightly outside of actual range to avoid scatter
-                       // size to peek into visible circle
+                       // Size to peek into visible circle
   QCPGraphDataContainer::const_iterator it = begin;
   while (it != end) {
     if (it->value > lowerClipValue && it->value < upperClipValue)

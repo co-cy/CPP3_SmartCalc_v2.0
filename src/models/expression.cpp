@@ -4,6 +4,8 @@
 
 #include "expression.h"
 
+#include "polish.h"
+
 void Expression::Add(const QString &string) {
   if (string == 'e') {
     if (!lexeme_.contains('e')) {
@@ -19,12 +21,12 @@ void Expression::Add(const QString &string) {
              lexeme_.back() == 'e') {
     lexeme_.push_back(string);
     string_.push_back(string);
-  } else if (GetOperatorPriority(string)) {
+  } else if (Polish::GetOperatorPriority(string)) {
     if (lexeme_.size() == 0 || IsGoodLexeme()) {
       if (lexeme_.size() > 0) {
-        lexemes_.push_back(lexeme_);
+        lexemes_.push_back(Lexeme(lexeme_, lexeme_.toDouble()));
       }
-      lexemes_.push_back(string);
+      lexemes_.push_back(Lexeme(string));
       if (string_.size() > 0) {
         string_.push_back(' ');
       }
@@ -45,17 +47,41 @@ void Expression::Add(const QString &string) {
   }
 }
 
-bool Expression::CalcPolish() {
-  if (!IsGoodLexeme()) {
-    return false;
-  } else if (lexeme_.size() != 0) {
-    lexemes_.push_back(lexeme_);
-    lexeme_.clear();
-  }
+void Expression::Cancel() {
+  if (lexeme_.size() > 0) {
+    lexeme_.chop(1);
+    if (lexeme_.size() > 0) {
+      string_.chop(1);
+    } else {
+      // remove char and space
+      string_.chop(2);
+    }
 
-  polish_.clear();
-  for (const auto &lexeme : lexemes_) {
+    // Removing the unary minus || plus
+    if (lexeme_ == '-' || lexeme_ == '+') {
+      lexeme_.chop(1);
+      string_.chop(2);
+    }
+  } else {
+    if (!lexemes_.empty()) {
+      // remove lexeme and space
+      string_.chop(lexemes_.back().Size() + 1);
+      lexemes_.pop_back();
+    }
   }
+}
 
-  return true;
+void Expression::Negate() {
+  if (lexeme_.size() > 0) {
+    if (lexeme_[0] == '-') {
+      lexeme_[0] = '+';
+      string_[string_.size() - lexeme_.size()] = '+';
+    } else if (lexeme_[0] == '+') {
+      lexeme_[0] = '-';
+      string_[string_.size() - lexeme_.size()] = '-';
+    } else {
+      string_.insert(string_.size() - lexeme_.size(), '-');
+      lexeme_.insert(0, '-');
+    }
+  }
 }
