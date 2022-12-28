@@ -36,6 +36,9 @@ class Calculator2 : public QMainWindow {
   void CalcDeposit();
   void DrawGraph();
 
+  void AddedChange();
+  void PopChange();
+
  private:
   Ui::Calculator2 *ui_;
   Controller exp_controller_;

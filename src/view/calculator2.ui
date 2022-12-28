@@ -30,7 +30,7 @@
        <enum>QTabWidget::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="movable">
        <bool>true</bool>
@@ -962,7 +962,7 @@ padding: 10px;
           <item>
            <widget class="QLabel" name="label_loan_amount">
             <property name="text">
-             <string>Общая сумма кредита</string>
+                <string>Общая сумма кредита:</string>
             </property>
            </widget>
           </item>
@@ -983,7 +983,7 @@ padding: 10px;
           <item>
            <widget class="QLabel" name="label_period">
             <property name="text">
-             <string>Срок</string>
+                <string>Срок (мес.):</string>
             </property>
            </widget>
           </item>
@@ -1004,7 +1004,7 @@ padding: 10px;
           <item>
            <widget class="QLabel" name="label_percent">
             <property name="text">
-             <string>Процентная ставка</string>
+                <string>Процентная ставка:</string>
             </property>
            </widget>
           </item>
@@ -1048,199 +1048,354 @@ padding: 10px;
           </item>
          </layout>
         </item>
-        <item>
-         <widget class="QLabel" name="label_mon_pay">
-          <property name="text">
-           <string>Ежемесячный платеж:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_overpay">
-          <property name="text">
-           <string>Переплата по кредиту:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_all_pay">
-          <property name="text">
-           <string>Общая выплата:</string>
-          </property>
-         </widget>
-        </item>
+           <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_6">
+                   <item>
+                       <widget class="QLabel" name="label_mon_pay_text">
+                           <property name="sizePolicy">
+                               <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                               </sizepolicy>
+                           </property>
+                           <property name="text">
+                               <string>Ежемесячный платеж:</string>
+                           </property>
+                       </widget>
+                   </item>
+                   <item>
+                       <widget class="QLabel" name="label_mon_pay">
+                           <property name="text">
+                               <string/>
+                           </property>
+                       </widget>
+                   </item>
+               </layout>
+           </item>
+           <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_7">
+                   <item>
+                       <widget class="QLabel" name="label_overpay_text">
+                           <property name="sizePolicy">
+                               <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                               </sizepolicy>
+                           </property>
+                           <property name="text">
+                               <string>Переплата по кредиту:</string>
+                           </property>
+                       </widget>
+                   </item>
+                   <item>
+                       <widget class="QLabel" name="label_overpay">
+                           <property name="text">
+                               <string/>
+                           </property>
+                       </widget>
+                   </item>
+               </layout>
+           </item>
+           <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_8">
+                   <item>
+                       <widget class="QLabel" name="label_all_pay_text">
+                           <property name="sizePolicy">
+                               <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                               </sizepolicy>
+                           </property>
+                           <property name="text">
+                               <string>Общая выплата:</string>
+                           </property>
+                       </widget>
+                   </item>
+                   <item>
+                       <widget class="QLabel" name="label_all_pay">
+                           <property name="text">
+                               <string/>
+                           </property>
+                       </widget>
+                   </item>
+               </layout>
+           </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="deposit_grid">
-       <attribute name="title">
-        <string>Депозитный</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="10" column="0" colspan="2">
-         <widget class="QLabel" name="label_finaly_percent">
-          <property name="text">
-           <string>Начисленные проценты:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="label_deposit_tax_period">
-          <property name="text">
-           <string>Налоговая ставка:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="1">
-         <widget class="QLineEdit" name="list_add"/>
-        </item>
-        <item row="4" column="1">
-         <widget class="QComboBox" name="pay_period">
-          <item>
-           <property name="text">
-            <string>Ежемесячный</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Ежеквартальный</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Полугодовой</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Ежегодный</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item row="8" column="1">
-         <widget class="QLineEdit" name="list_remove"/>
-        </item>
-        <item row="5" column="0">
-         <widget class="QLabel" name="label_capitalize">
-          <property name="text">
-           <string>Капитализация процентов:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="11" column="0" colspan="2">
-         <widget class="QLabel" name="label_sum_tax">
-          <property name="text">
-           <string>Сумма налога:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QDoubleSpinBox" name="deposit_tax_percent">
-          <property name="minimum">
-           <double>0.000000000000000</double>
-          </property>
-          <property name="maximum">
-           <double>999.000000000000000</double>
-          </property>
-          <property name="value">
-           <double>0.000000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0">
-         <widget class="QLabel" name="label_list_add">
-          <property name="text">
-           <string>Список пополнений:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="deposit_percent">
-          <property name="minimum">
-           <double>0.010000000000000</double>
-          </property>
-          <property name="maximum">
-           <double>999.000000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_deposit_period_2">
-          <property name="text">
-           <string>Процентная ставка:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_deposit_period_3">
-          <property name="text">
-           <string>Cрок:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="8" column="0">
-         <widget class="QLabel" name="label_list_remove">
-          <property name="text">
-           <string>Список частичных снятий:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QLabel" name="label_deposit_period">
-          <property name="text">
-           <string>Периодичность выплат:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QDoubleSpinBox" name="deposit_amount">
-          <property name="minimum">
-           <double>0.100000000000000</double>
-          </property>
-          <property name="maximum">
-           <double>1000000000000.000000000000000</double>
-          </property>
-         </widget>
-        </item>
-        <item row="9" column="1">
-         <widget class="QPushButton" name="calc_deposit">
-          <property name="text">
-           <string>Посчитать</string>
-          </property>
-         </widget>
-        </item>
-        <item row="12" column="0" colspan="2">
-         <widget class="QLabel" name="label_deposit_sum">
-          <property name="text">
-           <string>Сумма на вкладе к концу срока:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_deposit_amount">
-          <property name="text">
-           <string>Cумма вклада:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="1">
-         <widget class="QCheckBox" name="capitalize">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QSpinBox" name="deposit_period">
-          <property name="minimum">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <number>600</number>
-          </property>
-         </widget>
-        </item>
-       </layout>
+         <widget class="QWidget" name="deposit_grid">
+             <attribute name="title">
+                 <string>Депозитный</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_2">
+                 <item row="1" column="1">
+                     <widget class="QSpinBox" name="deposit_period">
+                         <property name="minimum">
+                             <number>1</number>
+                         </property>
+                         <property name="maximum">
+                             <number>600</number>
+                         </property>
+                     </widget>
+                 </item>
+                 <item row="9" column="1">
+                     <widget class="QPushButton" name="calc_deposit">
+                         <property name="text">
+                             <string>Посчитать</string>
+                         </property>
+                     </widget>
+                 </item>
+                 <item row="5" column="0">
+                     <widget class="QLabel" name="label_capitalize">
+                         <property name="text">
+                             <string>Капитализация процентов:</string>
+                         </property>
+                     </widget>
+                 </item>
+                 <item row="2" column="1">
+                     <widget class="QDoubleSpinBox" name="deposit_percent">
+                         <property name="minimum">
+                             <double>0.010000000000000</double>
+                         </property>
+                         <property name="maximum">
+                             <double>999.000000000000000</double>
+                         </property>
+                     </widget>
+                 </item>
+                 <item row="3" column="0">
+                     <widget class="QLabel" name="label_deposit_tax_period">
+                         <property name="text">
+                             <string>Налоговая ставка:</string>
+                         </property>
+                     </widget>
+                 </item>
+                 <item row="3" column="1">
+                     <widget class="QDoubleSpinBox" name="deposit_tax_percent">
+                         <property name="minimum">
+                             <double>0.000000000000000</double>
+                         </property>
+                         <property name="maximum">
+                             <double>999.000000000000000</double>
+                         </property>
+                         <property name="value">
+                             <double>0.000000000000000</double>
+                         </property>
+                     </widget>
+                 </item>
+                 <item row="5" column="1">
+                     <widget class="QCheckBox" name="capitalize">
+                         <property name="text">
+                             <string/>
+                         </property>
+                     </widget>
+                 </item>
+                 <item row="7" column="0" colspan="2">
+                     <layout class="QGridLayout" name="change_list_grid">
+                         <property name="leftMargin">
+                             <number>8</number>
+                         </property>
+                         <property name="topMargin">
+                             <number>8</number>
+                         </property>
+                         <property name="rightMargin">
+                             <number>8</number>
+                         </property>
+                         <property name="bottomMargin">
+                             <number>8</number>
+                         </property>
+                         <property name="spacing">
+                             <number>16</number>
+                         </property>
+                         <item row="1" column="1">
+                             <widget class="QPushButton" name="pop_change">
+                                 <property name="text">
+                                     <string>Убрать</string>
+                                 </property>
+                             </widget>
+                         </item>
+                         <item row="0" column="1">
+                             <widget class="QPushButton" name="append_change">
+                                 <property name="text">
+                                     <string>Добавить</string>
+                                 </property>
+                             </widget>
+                         </item>
+                         <item row="2" column="1">
+                             <spacer name="verticalSpacer">
+                                 <property name="orientation">
+                                     <enum>Qt::Vertical</enum>
+                                 </property>
+                                 <property name="sizeHint" stdset="0">
+                                     <size>
+                                         <width>20</width>
+                                         <height>40</height>
+                                     </size>
+                                 </property>
+                             </spacer>
+                         </item>
+                         <item row="0" column="0" rowspan="3">
+                             <widget class="QTableWidget" name="table_change">
+                                 <attribute name="verticalHeaderVisible">
+                                     <bool>false</bool>
+                                 </attribute>
+                                 <column>
+                                     <property name="text">
+                                         <string>№ Месяца</string>
+                                     </property>
+                                 </column>
+                                 <column>
+                                     <property name="text">
+                                         <string>Сумма</string>
+                                     </property>
+                                 </column>
+                             </widget>
+                         </item>
+                     </layout>
+                 </item>
+                 <item row="4" column="0">
+                     <widget class="QLabel" name="label_deposit_period">
+                         <property name="text">
+                             <string>Периодичность выплат:</string>
+                         </property>
+                     </widget>
+                 </item>
+                 <item row="1" column="0">
+                     <widget class="QLabel" name="label_deposit_period_3">
+                         <property name="text">
+                             <string>Cрок (мес.):</string>
+                         </property>
+                     </widget>
+                 </item>
+                 <item row="2" column="0">
+                     <widget class="QLabel" name="label_deposit_period_2">
+                         <property name="text">
+                             <string>Процентная ставка:</string>
+                         </property>
+                     </widget>
+                 </item>
+                 <item row="6" column="0" colspan="2">
+                     <widget class="QLabel" name="label_list_add">
+                         <property name="text">
+                             <string>Список изменений:</string>
+                         </property>
+                         <property name="alignment">
+                             <set>Qt::AlignCenter</set>
+                         </property>
+                     </widget>
+                 </item>
+                 <item row="11" column="0" colspan="2">
+                     <layout class="QHBoxLayout" name="horizontalLayout_10">
+                         <item>
+                             <widget class="QLabel" name="label_sum_tax_text">
+                                 <property name="sizePolicy">
+                                     <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                                         <horstretch>0</horstretch>
+                                         <verstretch>0</verstretch>
+                                     </sizepolicy>
+                                 </property>
+                                 <property name="text">
+                                     <string>Сумма налога:</string>
+                                 </property>
+                             </widget>
+                         </item>
+                         <item>
+                             <widget class="QLabel" name="label_sum_tax">
+                                 <property name="text">
+                                     <string/>
+                                 </property>
+                             </widget>
+                         </item>
+                     </layout>
+                 </item>
+                 <item row="0" column="0">
+                     <widget class="QLabel" name="label_deposit_amount">
+                         <property name="text">
+                             <string>Cумма вклада:</string>
+                         </property>
+                     </widget>
+                 </item>
+                 <item row="12" column="0" colspan="2">
+                     <layout class="QHBoxLayout" name="horizontalLayout_12">
+                         <item>
+                             <widget class="QLabel" name="label_deposit_sum_text">
+                                 <property name="sizePolicy">
+                                     <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                                         <horstretch>0</horstretch>
+                                         <verstretch>0</verstretch>
+                                     </sizepolicy>
+                                 </property>
+                                 <property name="text">
+                                     <string>Сумма на вкладе к концу срока:</string>
+                                 </property>
+                             </widget>
+                         </item>
+                         <item>
+                             <widget class="QLabel" name="label_deposit_sum">
+                                 <property name="text">
+                                     <string/>
+                                 </property>
+                             </widget>
+                         </item>
+                     </layout>
+                 </item>
+                 <item row="4" column="1">
+                     <widget class="QComboBox" name="pay_period">
+                         <item>
+                             <property name="text">
+                                 <string>Ежемесячный</string>
+                             </property>
+                         </item>
+                         <item>
+                             <property name="text">
+                                 <string>Ежеквартальный</string>
+                             </property>
+                         </item>
+                         <item>
+                             <property name="text">
+                                 <string>Полугодовой</string>
+                             </property>
+                         </item>
+                         <item>
+                             <property name="text">
+                                 <string>Ежегодный</string>
+                             </property>
+                         </item>
+                     </widget>
+                 </item>
+                 <item row="0" column="1">
+                     <widget class="QDoubleSpinBox" name="deposit_amount">
+                         <property name="minimum">
+                             <double>0.100000000000000</double>
+                         </property>
+                         <property name="maximum">
+                             <double>1000000000000.000000000000000</double>
+                         </property>
+                     </widget>
+                 </item>
+                 <item row="10" column="0" colspan="2">
+                     <layout class="QHBoxLayout" name="horizontalLayout_14">
+                         <item>
+                             <widget class="QLabel" name="label_finaly_percent_text">
+                                 <property name="sizePolicy">
+                                     <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                                         <horstretch>0</horstretch>
+                                         <verstretch>0</verstretch>
+                                     </sizepolicy>
+                                 </property>
+                                 <property name="text">
+                                     <string>Начисленные проценты:</string>
+                                 </property>
+                             </widget>
+                         </item>
+                         <item>
+                             <widget class="QLabel" name="label_finaly_percent">
+                                 <property name="text">
+                                     <string/>
+                                 </property>
+                             </widget>
+                         </item>
+                     </layout>
+                 </item>
+             </layout>
       </widget>
      </widget>
     </item>

@@ -62,6 +62,8 @@ Calculator2::Calculator2(QWidget *parent)
 
   connect(ui_->calc_credit, SIGNAL(clicked()), this, SLOT(CalcCredit()));
   connect(ui_->calc_deposit, SIGNAL(clicked()), this, SLOT(CalcDeposit()));
+  connect(ui_->append_change, SIGNAL(clicked()), this, SLOT(AddedChange()));
+  connect(ui_->pop_change, SIGNAL(clicked()), this, SLOT(PopChange()));
 
   ui_->customPlot->addGraph();
 
@@ -234,13 +236,12 @@ void Calculator2::CalcCredit() {
       all += Controller::CalcCreditDifferentiate(loan, period, i,
                                                  ui_->percent->value());
 
-    QString text = "Ежемесячный платеж: " + QString::number(start_res);
+    QString text = QString::number(start_res);
     if (period > 1) text += +" - " + QString::number(end_res);
 
     ui_->label_mon_pay->setText(text);
-    ui_->label_overpay->setText("Переплата по кредиту: " +
-                                QString::number(all - loan));
-    ui_->label_all_pay->setText("Общая выплата: " + QString::number(all));
+    ui_->label_overpay->setText(QString::number(all - loan));
+    ui_->label_all_pay->setText(QString::number(all));
   }
 }
 void Calculator2::CalcDeposit() {
@@ -253,4 +254,15 @@ void Calculator2::UpdateExpressionText() {
     ui_->expression->setStyleSheet("");
   }
   ui_->expression->setText(exp_controller_.String());
+}
+void Calculator2::AddedChange() {
+  ui_->table_change->insertRow(ui_->table_change->rowCount());
+  ui_->table_change->update();
+}
+
+void Calculator2::PopChange() {
+  if (ui_->table_change->rowCount() > 0) {
+    ui_->table_change->removeRow(ui_->table_change->rowCount() - 1);
+    ui_->table_change->update();
+  }
 }
