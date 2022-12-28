@@ -26,6 +26,16 @@ class ExpressionController {
 
     return result;
   };
+  QVector<double> Calc(QVector<double> x) {
+    Polish polish{expression_.GetLexemes()};
+
+    QVector<double> y(x.size());
+    for (int i = 0; i < x.size(); ++i) {
+      y[i] = polish.Calc(x[i]);
+    }
+
+    return y;
+  };
   [[nodiscard]] const QString &String() const noexcept {
     return expression_.String();
   };

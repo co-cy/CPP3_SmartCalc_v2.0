@@ -53,6 +53,7 @@ Calculator2::Calculator2(QWidget *parent)
   connect(ui_->exponent, SIGNAL(clicked()), this, SLOT(PressButton()));
 
   connect(ui_->calc_exp, SIGNAL(clicked()), this, SLOT(CalcExpression()));
+  connect(ui_->draw_graph, SIGNAL(clicked()), this, SLOT(DrawGraph()));
 
   connect(ui_->point, SIGNAL(clicked()), this, SLOT(PressButton()));
   connect(ui_->negate, SIGNAL(clicked()), this, SLOT(Negate()));
@@ -63,8 +64,9 @@ Calculator2::Calculator2(QWidget *parent)
   connect(ui_->calc_deposit, SIGNAL(clicked()), this, SLOT(CalcDeposit()));
 
   ui_->customPlot->addGraph();
-  ui_->customPlot->graph(0)->setPen(
-      QPen(Qt::red));  // line color blue for first graph
+
+  // line color blue for first graph
+  ui_->customPlot->graph(0)->setPen(QPen(Qt::red));
   ui_->customPlot->graph(0)->setLineStyle(QCPGraph::LineStyle::lsNone);
   ui_->customPlot->graph(0)->setScatterStyle(
       QCPScatterStyle(QCPScatterStyle::ScatterShape::ssCircle, 5));
@@ -89,26 +91,8 @@ Calculator2::Calculator2(QWidget *parent)
   ui_->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom |
                                    QCP::iSelectPlottables);
 
-  ui_->customPlot->setBackground(
-      ui_->graph_grid->palette().color(ui_->graph_grid->backgroundRole()));
-
-  ui_->customPlot->xAxis->setBasePen(QPen(Qt ::white, 1));  // Перо оси
-  ui_->customPlot->xAxis->setTickPen(QPen(Qt ::white, 1));  // Перо отметки оси
-  ui_->customPlot->xAxis->setSubTickPen(
-      QPen(Qt ::white, 1));  // Перо отметки оси
-  ui_->customPlot->xAxis->setTickLabelColor(
-      Qt ::white);  // цвет текста шкалы оси
-  ui_->customPlot->xAxis->setLabelColor(Qt ::white);  // Цвет метки оси
   ui_->customPlot->xAxis->setTickLengthIn(3);  // Длина шкалы по оси
   ui_->customPlot->xAxis->setTickLengthOut(5);  // Длина шкалы вне оси
-
-  ui_->customPlot->yAxis->setBasePen(QPen(Qt ::white, 1));  // Перо оси
-  ui_->customPlot->yAxis->setTickPen(QPen(Qt ::white, 1));  // Перо отметки оси
-  ui_->customPlot->yAxis->setSubTickPen(
-      QPen(Qt ::white, 1));  // Перо отметки оси
-  ui_->customPlot->yAxis->setTickLabelColor(
-      Qt ::white);  // цвет текста шкалы оси
-  ui_->customPlot->yAxis->setLabelColor(Qt ::white);  // Цвет метки оси
   ui_->customPlot->yAxis->setTickLengthIn(3);  // Длина шкалы по оси
   ui_->customPlot->yAxis->setTickLengthOut(5);  // Длина шкалы вне оси
 }
@@ -197,6 +181,29 @@ void Calculator2::CalcExpression() {
     ui_->expression->setText(e.what());
   }
 }
+
+void Calculator2::DrawGraph() {
+  int n = ((ui_->max_x->value() - ui_->min_x->value()) / ui_->step_x->value());
+
+  if (n < 0) n = 0;
+  if (n > 500000) n = 500000;
+
+  static QVector<double> x(500000);
+  x.resize(0);
+
+  for (int i = 0; i < n; ++i) {
+    x.push_back(ui_->min_x->value() + ui_->step_x->value() * i);
+  }
+
+  try {
+    ui_->customPlot->graph(0)->setData(x, exp_controller_.Calc(x));
+    ui_->customPlot->replot();
+  } catch (std::exception &e) {
+    ui_->customPlot->graph(0)->data()->clear();
+    ui_->customPlot->replot();
+  }
+}
+
 void Calculator2::CalcCredit() {
   QMessageBox::critical(nullptr, "ERROR", "NOT IMPL");
 }

@@ -34,6 +34,7 @@ class Calculator2 : public QMainWindow {
   void CalcExpression();
   void CalcCredit();
   void CalcDeposit();
+  void DrawGraph();
 
  private:
   Ui::Calculator2 *ui_;
