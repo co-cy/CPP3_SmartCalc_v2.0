@@ -7,7 +7,7 @@
 
 #include <QMainWindow>
 
-#include "controllers/expression_controller.h"
+#include "controllers/controller.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class Calculator2;
@@ -38,7 +38,7 @@ class Calculator2 : public QMainWindow {
 
  private:
   Ui::Calculator2 *ui_;
-  ExpressionController exp_controller_;
+  Controller exp_controller_;
 };
 
 #endif  // SMARTCALC_V2_0_SRC_VIEW_CALCULATOR2_H_

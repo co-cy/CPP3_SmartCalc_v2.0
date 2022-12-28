@@ -183,7 +183,8 @@ void Calculator2::CalcExpression() {
 }
 
 void Calculator2::DrawGraph() {
-  int n = ((ui_->max_x->value() - ui_->min_x->value()) / ui_->step_x->value());
+  int n =
+      (int)((ui_->max_x->value() - ui_->min_x->value()) / ui_->step_x->value());
 
   if (n < 0) n = 0;
   if (n > 500000) n = 500000;
@@ -205,7 +206,42 @@ void Calculator2::DrawGraph() {
 }
 
 void Calculator2::CalcCredit() {
-  QMessageBox::critical(nullptr, "ERROR", "NOT IMPL");
+  if (ui_->annuity->isChecked()) {
+    double loan = ui_->loan_amount->value();
+    int period = ui_->period->value();
+
+    double res =
+        Controller::CalcCreditAnnuity(loan, period, ui_->percent->value());
+    double all = res * period;
+
+    ui_->label_mon_pay->setText("Ежемесячный платеж: " + QString::number(res));
+    ui_->label_overpay->setText("Переплата по кредиту: " +
+                                QString::number(all - loan));
+    ui_->label_all_pay->setText("Общая выплата: " + QString::number(all));
+  } else {
+    double loan = ui_->loan_amount->value();
+    int period = ui_->period->value();
+
+    double start_res = Controller::CalcCreditDifferentiate(
+        loan, period, 1, ui_->percent->value());
+    double end_res = 0;
+    if (period > 1)
+      end_res = Controller::CalcCreditDifferentiate(loan, period, period,
+                                                    ui_->percent->value());
+
+    double all = start_res + end_res;
+    for (int i = 2; i < period; i++)
+      all += Controller::CalcCreditDifferentiate(loan, period, i,
+                                                 ui_->percent->value());
+
+    QString text = "Ежемесячный платеж: " + QString::number(start_res);
+    if (period > 1) text += +" - " + QString::number(end_res);
+
+    ui_->label_mon_pay->setText(text);
+    ui_->label_overpay->setText("Переплата по кредиту: " +
+                                QString::number(all - loan));
+    ui_->label_all_pay->setText("Общая выплата: " + QString::number(all));
+  }
 }
 void Calculator2::CalcDeposit() {
   QMessageBox::critical(nullptr, "ERROR", "NOT IMPL");
