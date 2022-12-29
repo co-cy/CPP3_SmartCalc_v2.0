@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.0)
 project(SmartCalc_v2.0 VERSION 2 LANGUAGES CXX)
 
 set(CMAKE_CXX_COMPILER g++)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wextra")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wextra -g")
+set(CMAKE_VERBOSE_MAKEFILE True)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -15,6 +16,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Core PrintSupport)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Core PrintSupport)
+find_package(GTest)
+include(CPack)
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_SOURCE_GENERATOR "TGZ")
 
 include_directories(libs/qcustomplot)
 
@@ -24,12 +29,21 @@ add_library(libQCustomPlot
     )
 target_link_libraries(libQCustomPlot PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::PrintSupport)
 
+set(LOGIC_SOURCES
+    controllers/controller.h
+    models/expression.cpp
+    models/expression.h
+    models/polish.cpp
+    models/polish.h
+    models/lexeme.h
+    models/deposit.h)
 set(PROJECT_SOURCES
-    view/calculator2.ui
-    main.cpp
     view/calculator2.cpp
+    view/calculator2.ui
     view/calculator2.h
-    controllers/controller.h models/expression.cpp models/expression.h models/polish.cpp models/polish.h models/lexeme.h models/deposit.h)
+    main.cpp
+    ${LOGIC_SOURCES}
+    )
 
 if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
   qt_add_executable(SmartCalc_v2.0
@@ -67,3 +81,15 @@ set_target_properties(SmartCalc_v2.0 PROPERTIES
 if (QT_VERSION_MAJOR EQUAL 6)
   qt_finalize_executable(SmartCalc_v2.0)
 endif ()
+
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+include("GoogleTest")
+
+enable_testing()
+
+add_executable(tests
+    ${LOGIC_SOURCES}
+    tests/all.cpp)
+target_link_libraries(tests PRIVATE Qt${QT_VERSION_MAJOR}::Core gtest gtest_main)
+
+gtest_discover_tests(tests)

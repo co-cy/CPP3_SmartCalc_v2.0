@@ -5,6 +5,7 @@
 #include "polish.h"
 
 #include <cmath>
+#include <iostream>
 namespace s21 {
 
 Polish::Polish(QVector<Lexeme> lexemes) {
@@ -36,7 +37,9 @@ Polish::Polish(QVector<Lexeme> lexemes) {
     } else {
       int cur_priority = GetOperatorPriority(lexeme);
       while (!operators.empty() &&
-             cur_priority < GetOperatorPriority(operators.back())) {
+             (cur_priority < GetOperatorPriority(operators.back()) ||
+              (lexeme != '^' &&
+               cur_priority == GetOperatorPriority(operators.back())))) {
         stack_.push_back(std::move(operators.back()));
         operators.pop_back();
       }

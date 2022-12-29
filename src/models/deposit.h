@@ -16,8 +16,8 @@ class Deposit {
   static QPair<double, double> CalcDeposit(
       double deposit_amount, int period, double percent, double tax_percent,
       int pay_period, int capitalize,
-      QMap<int, double>::const_iterator begin_map,
-      QMap<int, double>::const_iterator end_map) {
+      QMap<int, double>::const_iterator &begin_map,
+      QMap<int, double>::const_iterator &end_map) {
     tax_percent = tax_percent * pay_period / 1200;
     percent = percent * pay_period / 1200;
 
