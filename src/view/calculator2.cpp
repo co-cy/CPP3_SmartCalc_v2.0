@@ -328,5 +328,71 @@ void Calculator2::PopChange() {
     ui_->table_change->removeRow(ui_->table_change->rowCount() - 1);
   }
 }
+void Calculator2::keyPressEvent(QKeyEvent *event) {
+  QWidget::keyPressEvent(event);
+  if (ui_->tabWidget->currentIndex() != 0) {
+    return;
+  }
+
+  if (event->key() == Qt::Key_0) {
+    ui_->number_0->click();
+  } else if (event->key() == Qt::Key_1) {
+    ui_->number_1->click();
+  } else if (event->key() == Qt::Key_2) {
+    ui_->number_2->click();
+  } else if (event->key() == Qt::Key_3) {
+    ui_->number_3->click();
+  } else if (event->key() == Qt::Key_4) {
+    ui_->number_4->click();
+  } else if (event->key() == Qt::Key_5) {
+    ui_->number_5->click();
+  } else if (event->key() == Qt::Key_6) {
+    ui_->number_6->click();
+  } else if (event->key() == Qt::Key_7) {
+    ui_->number_7->click();
+  } else if (event->key() == Qt::Key_8) {
+    ui_->number_8->click();
+  } else if (event->key() == Qt::Key_9) {
+    ui_->number_9->click();
+  } else if (event->key() == Qt::Key_X) {
+    ui_->number_x->click();
+  } else if (event->key() == Qt::Key_Backspace) {
+    ui_->cancel->click();
+  } else if (event->key() == Qt::Key_Return) {
+    ui_->calc_exp->click();
+  } else if (event->key() == Qt::Key_End) {
+    ui_->clear->click();
+  } else if (event->key() == Qt::Key_Plus) {
+    ui_->sum->click();
+  } else if (event->key() == Qt::Key_Minus) {
+    ui_->sub->click();
+  } else if (event->key() == Qt::Key_division) {
+    ui_->div->click();
+  } else if (event->key() == Qt::Key_multiply) {
+    ui_->mul->click();
+  } else if (event->key() == Qt::Key_AsciiCircum) {
+    ui_->pow->click();
+  } else if (event->key() == Qt::Key_Percent) {
+    ui_->mod->click();
+  } else if (event->key() == Qt::Key_Comma) {
+    ui_->point->click();
+  } else if (event->key() == Qt::Key_E) {
+    ui_->exponent->click();
+  } else if (event->key() == Qt::Key_S) {
+    ui_->sin->click();
+  } else if (event->key() == Qt::Key_C) {
+    ui_->cos->click();
+  } else if (event->key() == Qt::Key_T) {
+    ui_->tan->click();
+  } else if (event->key() == Qt::Key_P) {
+    ui_->pi->click();
+  } else if (event->key() == Qt::Key_ParenLeft) {
+    ui_->open_bracket->click();
+  } else if (event->key() == Qt::Key_ParenRight) {
+    ui_->close_bracket->click();
+  } else if (event->key() == Qt::Key_L) {
+    ui_->log->click();
+  }
+}
 
 }  // namespace s21
