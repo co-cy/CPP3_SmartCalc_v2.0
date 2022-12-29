@@ -5,6 +5,7 @@
 #include "polish.h"
 
 #include <cmath>
+namespace s21 {
 
 Polish::Polish(QVector<Lexeme> lexemes) {
   QVector<Lexeme> operators{};
@@ -45,7 +46,7 @@ Polish::Polish(QVector<Lexeme> lexemes) {
 
   while (!operators.empty()) {
     if (operators.back() == '(') {
-        throw std::logic_error("Not close brackets");
+      throw std::logic_error("Not close brackets");
     }
     stack_.push_back(std::move(operators.back()));
     operators.pop_back();
@@ -113,3 +114,5 @@ double Polish::Calc(long double x) {
 
   return (double)numbers.pop();
 }
+
+}  // namespace s21

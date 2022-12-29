@@ -8,6 +8,8 @@
 #include <QString>
 #include <utility>
 
+namespace s21 {
+
 struct Lexeme {
   QString string;
   bool is_num = false;
@@ -33,5 +35,7 @@ struct Lexeme {
     return string != c;
   }
 };
+
+}  // namespace s21
 
 #endif  // SMARTCALC_V2_0_SRC_MODELS_LEXEME_H_

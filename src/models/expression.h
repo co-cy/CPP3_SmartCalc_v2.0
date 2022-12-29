@@ -10,6 +10,8 @@
 
 #include "lexeme.h"
 
+namespace s21 {
+
 class Expression {
  private:
   QString string_;
@@ -50,5 +52,7 @@ class Expression {
     return ok;
   }
 };
+
+}  // namespace s21
 
 #endif  // SMARTCALC_V2_0_SRC_MODELS_EXPRESSION_H_

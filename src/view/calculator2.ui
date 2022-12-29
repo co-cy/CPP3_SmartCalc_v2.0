@@ -30,7 +30,7 @@
        <enum>QTabWidget::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="movable">
        <bool>true</bool>
@@ -1032,13 +1032,13 @@ padding: 10px;
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QRadioButton" name="annuity">
-            <property name="text">
-             <string>Аннуитетный</string>
-            </property>
-           </widget>
-          </item>
+             <item>
+                 <widget class="QRadioButton" name="annuity">
+                     <property name="text">
+                         <string>Аннуитетный</string>
+                     </property>
+                 </widget>
+             </item>
              <item>
                  <widget class="QPushButton" name="calc_credit">
                      <property name="text">

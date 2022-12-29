@@ -10,6 +10,7 @@
 #include <QString>
 
 namespace s21 {
+
 class Deposit {
  public:
   static QPair<double, double> CalcDeposit(
@@ -47,6 +48,7 @@ class Deposit {
     return result;
   }
 };
+
 }  // namespace s21
 
 #endif  // SMARTCALC_V2_0_SRC_MODELS_DEPOSIT_H_

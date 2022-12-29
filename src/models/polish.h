@@ -12,6 +12,8 @@
 
 #include "lexeme.h"
 
+namespace s21 {
+
 class Polish {
   QStack<Lexeme> stack_;
 
@@ -45,5 +47,6 @@ class Polish {
 
   double Calc(long double x);
 };
+}  // namespace s21
 
 #endif  // SMARTCALC_V2_0_SRC_MODELS_POLISH_H_

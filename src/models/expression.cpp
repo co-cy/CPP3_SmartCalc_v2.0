@@ -6,6 +6,8 @@
 
 #include "polish.h"
 
+namespace s21 {
+
 void Expression::Add(const QString &string) {
   if (string == 'e') {
     if (!lexeme_.contains('e')) {
@@ -85,3 +87,5 @@ void Expression::Negate() {
     }
   }
 }
+
+}  // namespace s21
