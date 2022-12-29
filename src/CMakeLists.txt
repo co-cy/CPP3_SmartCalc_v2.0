@@ -2,8 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 project(SmartCalc_v2.0 VERSION 2 LANGUAGES CXX)
 
 set(CMAKE_CXX_COMPILER g++)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wextra -g")
-set(CMAKE_VERBOSE_MAKEFILE True)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror -Wextra")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
