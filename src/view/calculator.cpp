@@ -1,56 +1,15 @@
-void CalculatorWindow::calc_credit() {
-  if (this->ui->annuity->isChecked()) {
-    double loan = this->ui->loan_amount->value();
-    int period = this->ui->period->value();
+void CalculatorWindow::calc_deposit() {
+  double deposit_amount = this->ui->deposit_amount->value();
+  int pay_period;
+  int error_code = 0;
 
-    double res = credit_calc_annuity(loan, period, this->ui->percent->value());
-    double all = res * period;
-
-    this->ui->label_mon_pay->setText("Ежемесячный платеж: " +
-                                     QString::number(res));
-    this->ui->label_overpay->setText("Переплата по кредиту: " +
-                                       QString::number(all - loan));
-      this->ui->label_all_pay->setText("Общая выплата: " +
-                                       QString::number(all));
-    } else {
-      double loan = this->ui->loan_amount->value();
-      int period = this->ui->period->value();
-
-      double start_res = credit_calc_differentiate(loan, period, 1,
-                                                   this->ui->percent->value());
-      double end_res = 0;
-      if (period > 1)
-        end_res = credit_calc_differentiate(loan, period, period,
-                                            this->ui->percent->value());
-
-      double all = start_res + end_res;
-      for (int i = 2; i < period; i++)
-        all += credit_calc_differentiate(loan, period, i,
-                                         this->ui->percent->value());
-
-      QString text = "Ежемесячный платеж: " + QString::number(start_res);
-      if (period > 1) text += +" - " + QString::number(end_res);
-
-      this->ui->label_mon_pay->setText(text);
-      this->ui->label_overpay->setText("Переплата по кредиту: " +
-                                       QString::number(all - loan));
-      this->ui->label_all_pay->setText("Общая выплата: " +
-                                       QString::number(all));
-    }
-  }
-
-  void CalculatorWindow::calc_deposit() {
-    double deposit_amount = this->ui->deposit_amount->value();
-    int pay_period;
-    int error_code = 0;
-
-    int cur_index = this->ui->pay_period->currentIndex();
-    if (cur_index == 0) {
-      pay_period = 1;
-    } else if (cur_index == 1) {
-      pay_period = 3;
-    } else if (cur_index == 2) {
-      pay_period = 6;
+  int cur_index = this->ui->pay_period->currentIndex();
+  if (cur_index == 0) {
+    pay_period = 1;
+  } else if (cur_index == 1) {
+    pay_period = 3;
+  } else if (cur_index == 2) {
+    pay_period = 6;
     } else if (cur_index == 3) {
       pay_period = 12;
     } else {

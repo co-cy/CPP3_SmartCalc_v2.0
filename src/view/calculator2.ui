@@ -30,7 +30,7 @@
        <enum>QTabWidget::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>2</number>
       </property>
       <property name="movable">
        <bool>true</bool>
@@ -1004,7 +1004,7 @@ padding: 10px;
           <item>
            <widget class="QLabel" name="label_percent">
             <property name="text">
-                <string>Процентная ставка:</string>
+                <string>Процентная ставка (в год):</string>
             </property>
            </widget>
           </item>
@@ -1039,13 +1039,13 @@ padding: 10px;
             </property>
            </widget>
           </item>
-          <item>
-           <widget class="QPushButton" name="calc_credit">
-            <property name="text">
-             <string>Посчитать</string>
-            </property>
-           </widget>
-          </item>
+             <item>
+                 <widget class="QPushButton" name="calc_credit">
+                     <property name="text">
+                         <string>Посчитать</string>
+                     </property>
+                 </widget>
+             </item>
          </layout>
         </item>
            <item>
@@ -1164,7 +1164,7 @@ padding: 10px;
                  <item row="3" column="0">
                      <widget class="QLabel" name="label_deposit_tax_period">
                          <property name="text">
-                             <string>Налоговая ставка:</string>
+                             <string>Налоговая ставка (в год):</string>
                          </property>
                      </widget>
                  </item>
@@ -1234,6 +1234,9 @@ padding: 10px;
                          </item>
                          <item row="0" column="0" rowspan="3">
                              <widget class="QTableWidget" name="table_change">
+                                 <attribute name="horizontalHeaderDefaultSectionSize">
+                                     <number>173</number>
+                                 </attribute>
                                  <attribute name="verticalHeaderVisible">
                                      <bool>false</bool>
                                  </attribute>
@@ -1268,7 +1271,7 @@ padding: 10px;
                  <item row="2" column="0">
                      <widget class="QLabel" name="label_deposit_period_2">
                          <property name="text">
-                             <string>Процентная ставка:</string>
+                             <string>Процентная ставка (в год):</string>
                          </property>
                      </widget>
                  </item>
@@ -1396,7 +1399,7 @@ padding: 10px;
                      </layout>
                  </item>
              </layout>
-      </widget>
+         </widget>
      </widget>
     </item>
    </layout>

@@ -11,6 +11,8 @@
 
 #include "ui_calculator2.h"
 
+namespace s21 {
+
 Calculator2::Calculator2(QWidget *parent)
     : QMainWindow(parent), ui_(new Ui::Calculator2) {
   ui_->setupUi(this);
@@ -216,10 +218,9 @@ void Calculator2::CalcCredit() {
         Controller::CalcCreditAnnuity(loan, period, ui_->percent->value());
     double all = res * period;
 
-    ui_->label_mon_pay->setText("Ежемесячный платеж: " + QString::number(res));
-    ui_->label_overpay->setText("Переплата по кредиту: " +
-                                QString::number(all - loan));
-    ui_->label_all_pay->setText("Общая выплата: " + QString::number(all));
+    ui_->label_mon_pay->setText(QString::number(res));
+    ui_->label_overpay->setText(QString::number(all - loan));
+    ui_->label_all_pay->setText(QString::number(all));
   } else {
     double loan = ui_->loan_amount->value();
     int period = ui_->period->value();
@@ -245,7 +246,65 @@ void Calculator2::CalcCredit() {
   }
 }
 void Calculator2::CalcDeposit() {
-  QMessageBox::critical(nullptr, "ERROR", "NOT IMPL");
+  static QMap<int, double> map_changed;
+  map_changed.clear();
+  double z = ui_->deposit_amount->value();
+
+  bool ok = true;
+  for (int i = 0; i < ui_->table_change->rowCount(); ++i) {
+    int month = ui_->table_change->item(i, 0)->text().toInt(&ok);
+    if (!ok) {
+      break;
+    }
+    double amount = ui_->table_change->item(i, 1)->text().toDouble(&ok);
+    if (!ok) {
+      break;
+    }
+    if (month <= ui_->deposit_period->value()) {
+      z += amount;
+    }
+    if (map_changed.find(month) != map_changed.end()) {
+      map_changed[month] += amount;
+    } else {
+      map_changed[month] = amount;
+    }
+  }
+
+  if (ok) {
+    double deposit_amount = ui_->deposit_amount->value();
+    int cur_index = ui_->pay_period->currentIndex();
+    int pay_period;
+    if (cur_index == 1) {
+      pay_period = 3;
+    } else if (cur_index == 2) {
+      pay_period = 6;
+    } else if (cur_index == 3) {
+      pay_period = 12;
+    } else {
+      pay_period = 1;
+    }
+
+    try {
+      auto res = Controller::CalcDeposit(
+          deposit_amount, ui_->deposit_period->value(),
+          ui_->deposit_percent->value(), ui_->deposit_tax_percent->value(),
+          pay_period, ui_->capitalize->isChecked(), map_changed.cbegin(),
+          map_changed.cend());
+      ui_->label_finaly_percent->setText(QString::number(res.second - z));
+      ui_->label_sum_tax->setText(QString::number(res.first));
+      ui_->label_deposit_sum->setText(QString::number(z));
+
+    } catch (std::exception &e) {
+      ui_->label_finaly_percent->setText(e.what());
+      ui_->label_sum_tax->setText(e.what());
+      ui_->label_deposit_sum->setText(e.what());
+    }
+    return;
+  }
+
+  ui_->label_finaly_percent->setText("ОШИБКА");
+  ui_->label_sum_tax->setText("ОШИБКА");
+  ui_->label_deposit_sum->setText("ОШИБКА");
 }
 
 void Calculator2::UpdateExpressionText() {
@@ -255,14 +314,19 @@ void Calculator2::UpdateExpressionText() {
   }
   ui_->expression->setText(exp_controller_.String());
 }
+
 void Calculator2::AddedChange() {
   ui_->table_change->insertRow(ui_->table_change->rowCount());
-  ui_->table_change->update();
+  ui_->table_change->setItem(ui_->table_change->rowCount() - 1, 0,
+                             new QTableWidgetItem("1"));
+  ui_->table_change->setItem(ui_->table_change->rowCount() - 1, 1,
+                             new QTableWidgetItem("100.0"));
 }
 
 void Calculator2::PopChange() {
   if (ui_->table_change->rowCount() > 0) {
     ui_->table_change->removeRow(ui_->table_change->rowCount() - 1);
-    ui_->table_change->update();
   }
 }
+
+}  // namespace s21

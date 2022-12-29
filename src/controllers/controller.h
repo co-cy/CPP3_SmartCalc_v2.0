@@ -7,8 +7,11 @@
 
 #include <cmath>
 
+#include "models/deposit.h"
 #include "models/expression.h"
 #include "models/polish.h"
+
+namespace s21 {
 
 class Controller {
  private:
@@ -56,6 +59,16 @@ class Controller {
     return loan_amount / period +
            percent * (loan_amount - (loan_amount * (cur_period - 1) / period));
   }
+  static QPair<double, double> CalcDeposit(
+      double deposit_amount, int period, double percent, double tax_percent,
+      int pay_period, int capitalize,
+      QMap<int, double>::const_iterator begin_map,
+      QMap<int, double>::const_iterator end_map) {
+    return Deposit::CalcDeposit(deposit_amount, period, percent, tax_percent,
+                                pay_period, capitalize, begin_map, end_map);
+  }
 };
+
+}  // namespace s21
 
 #endif  // SMARTCALC_V2_0_SRC_CONTROLLERS_CONTROLLER_H_

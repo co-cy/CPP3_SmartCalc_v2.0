@@ -8,7 +8,7 @@
 
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
-  Calculator2 w;
+  s21::Calculator2 w;
   w.show();
   return QApplication::exec();
 }

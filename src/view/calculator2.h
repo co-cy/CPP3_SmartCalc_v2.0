@@ -14,6 +14,8 @@ class Calculator2;
 }
 QT_END_NAMESPACE
 
+namespace s21 {
+
 class Calculator2 : public QMainWindow {
   Q_OBJECT
 
@@ -43,5 +45,7 @@ class Calculator2 : public QMainWindow {
   Ui::Calculator2 *ui_;
   Controller exp_controller_;
 };
+
+}  // namespace s21
 
 #endif  // SMARTCALC_V2_0_SRC_VIEW_CALCULATOR2_H_
