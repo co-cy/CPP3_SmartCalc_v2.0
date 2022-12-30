@@ -6,6 +6,7 @@
 
 #include <cmath>
 #include <iostream>
+
 namespace s21 {
 
 Polish::Polish(QVector<Lexeme> lexemes) {
@@ -24,11 +25,6 @@ Polish::Polish(QVector<Lexeme> lexemes) {
 
       if (!operators.empty()) {
         operators.pop_back();
-
-        while (!operators.empty() && !IsOperator(operators.back())) {
-          stack_.push_back(std::move(operators.back()));
-          operators.pop_back();
-        }
       } else {
         throw std::logic_error("Not open brackets");
       }

@@ -251,7 +251,10 @@ TEST(CalcTest, cancel) {
   controller.Add("+");
   controller.Add("10");
   controller.Negate();
+  controller.Add("10");
 
+  controller.Cancel();
+  controller.Cancel();
   controller.Cancel();
   controller.Cancel();
   controller.Cancel();
@@ -315,6 +318,56 @@ TEST(CalcTest, bad4) {
   EXPECT_DOUBLE_EQ(controller.Calc(0), 1);
 }
 
+TEST(CalcTest, bad5) {
+  Controller controller;
+
+  controller.Add("1");
+  controller.Add("+");
+  EXPECT_ANY_THROW(controller.Calc(0));
+}
+
+TEST(CalcTest, bad6) {
+  Controller controller;
+
+  controller.Add("+");
+  EXPECT_ANY_THROW(controller.Calc(0));
+}
+
+TEST(CalcTest, bad7) {
+  Controller controller;
+
+  controller.Add("1");
+  controller.Add("sin");
+  controller.Add("0");
+
+  EXPECT_ANY_THROW(controller.Calc(0));
+}
+
+TEST(CalcTest, bad8) {
+  Controller controller;
+
+  controller.Add("(");
+
+  EXPECT_ANY_THROW(controller.Calc(0));
+}
+
+TEST(CalcTest, bad9) {
+  Controller controller;
+
+  controller.Add(")");
+
+  EXPECT_ANY_THROW(controller.Calc(0));
+}
+
+TEST(CalcTest, bad10) {
+  Controller controller;
+
+  controller.Add("1");
+  controller.Add("e");
+
+  EXPECT_ANY_THROW(controller.Calc(0));
+}
+
 TEST(CalcTest, hard) {
   Controller controller;
 
@@ -351,4 +404,29 @@ TEST(CalcTest, depositTest) {
   EXPECT_DOUBLE_EQ(0, 0);
   EXPECT_DOUBLE_EQ(r.first, 0);
   EXPECT_DOUBLE_EQ(r.second, 1010);
+}
+
+TEST(CalcTest, depositTest2) {
+  QMap<int, double> z{{1, 100}};
+  auto r =
+      s21::Controller::CalcDeposit(1000, 1, 12, 0, 1, 0, z.cbegin(), z.cend());
+
+  EXPECT_DOUBLE_EQ(0, 0);
+  EXPECT_DOUBLE_EQ(r.first, 0);
+  EXPECT_DOUBLE_EQ(r.second, 1110);
+}
+
+TEST(CalcTest, depositTest3) {
+  QMap<int, double> z{};
+  auto r =
+      s21::Controller::CalcDeposit(1000, 1, 12, 0, 1, 1, z.cbegin(), z.cend());
+
+  EXPECT_DOUBLE_EQ(0, 0);
+  EXPECT_DOUBLE_EQ(r.first, 0);
+  EXPECT_DOUBLE_EQ(r.second, 1010);
+}
+
+TEST(CalcTest, depositTest4) {
+  QMap<int, double> z{{1, -100000}};
+  EXPECT_ANY_THROW(s21::Controller::CalcDeposit(1000, 1, 12, 0, 1, 1, z.cbegin(), z.cend()));
 }

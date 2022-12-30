@@ -52,7 +52,7 @@ void Expression::Add(const QString &string) {
 void Expression::Cancel() {
   if (lexeme_.size() > 0) {
     lexeme_.chop(1);
-    if (lexeme_.size() > 0) {
+    if (lexeme_.size() > 1) {
       string_.chop(1);
     } else {
       // remove char and space

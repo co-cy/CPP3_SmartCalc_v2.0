@@ -292,7 +292,11 @@ void Calculator2::CalcDeposit() {
           map_changed.cend());
       ui_->label_finaly_percent->setText(QString::number(res.second - z));
       ui_->label_sum_tax->setText(QString::number(res.first));
-      ui_->label_deposit_sum->setText(QString::number(z));
+      if (ui_->capitalize->isChecked()) {
+        ui_->label_deposit_sum->setText(QString::number(res.second));
+      } else {
+        ui_->label_deposit_sum->setText(QString::number(z));
+      }
 
     } catch (std::exception &e) {
       ui_->label_finaly_percent->setText(e.what());

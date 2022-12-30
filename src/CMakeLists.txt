@@ -89,6 +89,6 @@ enable_testing()
 add_executable(tests
     ${LOGIC_SOURCES}
     tests/all.cpp)
-target_link_libraries(tests PRIVATE Qt${QT_VERSION_MAJOR}::Core gtest gtest_main)
+target_link_libraries(tests PRIVATE Qt${QT_VERSION_MAJOR}::Core GTest::GTest GTest::Main)
 
 gtest_discover_tests(tests)
