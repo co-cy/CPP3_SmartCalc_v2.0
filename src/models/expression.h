@@ -37,6 +37,7 @@ class Expression {
     if (lexeme_.size() > 0) {
       if (IsGoodLexeme()) {
         lexemes_.push_back(Lexeme(lexeme_, lexeme_.toDouble()));
+        lexeme_.clear();
       } else {
         throw std::logic_error("Error");
       }
